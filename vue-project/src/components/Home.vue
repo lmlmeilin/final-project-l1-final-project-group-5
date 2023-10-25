@@ -6,9 +6,9 @@
 </template>
 
 <script>
-import WelcomeCpp from '@/components/WelcomeCpp.vue'
-import AddCoin from '@/components/AddCoin.vue'
-import ProfitDisplay from '@/components/ProfitDisplay.vue'
+import About from '@/components/About.vue'
+import AddRemindr from '@/components/AddReminder.vue'
+import ReminderDisplay from '@/components/ReminderDisplay.vue'
 
 export default {
   name: 'App',
