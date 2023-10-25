@@ -1,5 +1,5 @@
 <template>
-  <WelcomeCpp/>
+  <WelcomePillPal/>
   <AddCoin @added="change" />
   <ProfitDisplay :key="refreshComp"/>  
   <img id = "bg" src="@/assets/Coins2.png" alt="alt">
