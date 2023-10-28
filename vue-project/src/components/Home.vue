@@ -1,67 +1,54 @@
 <template>
-  <WelcomeCpp/>
-  <AddCoin @added="change" />
-  <ProfitDisplay :key="refreshComp"/>  
-  <img id = "bg" src="@/assets/Coins2.png" alt="alt">
-</template>
-
-<script>
-import About from '@/components/About.vue'
-import AddRemindr from '@/components/AddReminder.vue'
-import ReminderDisplay from '@/components/ReminderDisplay.vue'
-
-export default {
-  name: 'App',
-  components:{
-    WelcomeCpp,
-    AddCoin,
-    ProfitDisplay
-  },
-  data(){
-    return{
-      refreshComp:0
-    }
-   },
-  methods:{
-    change(){  
-      this.refreshComp += 1
-      }
-     }  
-    }
-</script>
-
-<template>
-  <div class="greetings">
-    <h1 class="green">{{ msg }}</h1>
-    <h3>
-      You’ve successfully created a project with
-      <a href="https://vitejs.dev/" target="_blank" rel="noopener">Vite</a> +
-      <a href="https://vuejs.org/" target="_blank" rel="noopener">Vue 3</a>.
-    </h3>
+  <div class="home-page">
+    <img src="@/assets/HOME.png" alt="Home Image" />
+    <div class="quote">
+      <p class="quote-text">
+        A SINGLE SOURCE SOLUTION
+      </p>
+      <p class="quote-text">
+        TO YOUR HEALTH NEEDS
+      </p>
+    </div>
   </div>
 </template>
 
+<script>
+export default {
+  name: 'Home',
+};
+</script>
+
 <style scoped>
-h1 {
-  font-weight: 500;
-  font-size: 2.6rem;
-  position: relative;
-  top: -10px;
+.home-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: url(@/assets/Coins2.png);
+  background-size: cover;
+  min-height: 100vh;
+  color: #FFF;
 }
 
-h3 {
-  font-size: 1.2rem;
+.quote {
+  text-align: left;
+  font-family: Kanit;
+  font-size: 20px;
+  font-weight: 600;
+  line-height: normal;
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
 }
 
-.greetings h1,
-.greetings h3 {
-  text-align: center;
+.quote-text {
+  margin: 0;
 }
 
-@media (min-width: 1024px) {
-  .greetings h1,
-  .greetings h3 {
-    text-align: left;
-  }
+.quote-text:first-child {
+  color: #3CB26D;
 }
+
+</style>
+
 </style>
