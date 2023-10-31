@@ -5,8 +5,7 @@
   
             <div class = "formlii" >            
                 <label for="med">Medicine Name:</label>  
-                <h6 id = "medName">MedName</h6>  <br><br>
-             
+                <h2 id = "medName">MedName</h2>  <br><br>
                 <label for="dosage">Dosage: </label>
                 <input type="number" id = "dosage" required =""  placeholder="Edit dosage"><br><br>               
                 <label for="freq">How many times do you take this medicine per day? </label>
@@ -34,6 +33,8 @@
     </div>
   </template>
   
+
+
 <script>
 import firebaseApp from '../firebase.js';
 import { getFirestore } from "firebase/firestore"
