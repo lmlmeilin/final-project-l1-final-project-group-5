@@ -38,7 +38,7 @@ methods: {
   let freq  = document.getElementById("freq").value
   let baFood =  document.getElementById("baFood").value
 
-  alert(" Saving your data for Coin : " + med) 
+  alert(" Saving your data for Med : " + med) 
   // last class-- > firebase 8 --> await db.collection("Portfolio").doc(coin).set(...
   // We change to firebase 9     
   try{

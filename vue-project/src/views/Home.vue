@@ -1,14 +1,13 @@
 <template>
   <WelcomeCpp/>
   <AddCoin @added="change" />
-  <ProfitDisplay :key="refreshComp"/>  
-  <img id = "bg" src="@/assets/Coins2.png" alt="alt">
+  <ReminderDisplay :key="refreshComp"/>  
 </template>
 
 <script>
-import WelcomeCpp from '@/components/WelcomeCpp.vue'
-import AddCoin from '@/components/AddCoin.vue'
-import ProfitDisplay from '@/components/ProfitDisplay.vue'
+import Home from '@/components/Home.vue'
+import AddReminder from '@/components/AddReminder.vue'
+import ReminderDisplay from '@/components/ReminderDisplay.vue'
 
 export default {
   name: 'App',
