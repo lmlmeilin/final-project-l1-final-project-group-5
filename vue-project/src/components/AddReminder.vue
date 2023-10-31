@@ -1,7 +1,7 @@
 <template>
   <div class ="container">
       <form id="myform">
-          <h2>Add Reminder</h2>
+          <h2>Add New Reminder, #Reminder 1</h2>
 
           <div class = "formli" >            
               <label for="med">Med Name:</label>
@@ -12,9 +12,21 @@
               <input type="number" id = "freq" required =""  placeholder="Enter number of times" ><br><br>
               <label for="baFood">Before/After Food </label>
               <input type="text" id = "baFood" required =""  placeholder="Enter before or after" ><br><br>
-
-              <div class ="save" >
-                  <button  id = "savebutton"  type="button"  v-on:click="savetofs"> Save </button>
+              <label for="setRem">Set reminder notification to ring/silent</label>
+              <input type="text" id = "setRem" required =""  placeholder="Select ring/silent" ><br><br>
+              <label for="chooseFreq">Choose frequency of intake</label>
+              <input type="text" id = "chooseFreq" required =""  placeholder="Daily/WeekLy/Monthly" ><br><br>
+              <label for="first">1st Intake</label>
+              <input type="number" id = "first" required =""  placeholder="Enter time" ><br><br>
+              <label for="second">2nd Intake</label>
+              <input type="number" id = "second" required =""  placeholder="Enter time" ><br><br>
+              <label for="third">3rd Intake</label>
+              <input type="number" id = "third" required =""  placeholder="Enter time" ><br><br>
+              <label for="totalDuration">Total duration required to complete the medication</label>
+              <input type="number" id = "totalDuration" required =""  placeholder="Enter duration" ><br><br>
+              
+              <div class ="createReminder" >
+                  <button  id = "createReminderButton"  type="button"  v-on:click="savetofs"> Create Reminder </button>
              </div>
           </div>
       </form> 
