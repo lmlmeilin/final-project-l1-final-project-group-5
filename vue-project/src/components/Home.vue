@@ -24,7 +24,6 @@ export default {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background: url(@/assets/Coins2.png);
   background-size: cover;
   min-height: 100vh;
   color: #FFF;
@@ -48,7 +47,4 @@ export default {
 .quote-text:first-child {
   color: #3CB26D;
 }
-
-</style>
-
 </style>
