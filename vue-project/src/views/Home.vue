@@ -1,49 +1,52 @@
 <template>
-  <WelcomeCpp/>
-  <AddCoin @added="change" />
-  <ReminderDisplay :key="refreshComp"/>  
+  <div class="home-page">
+    <img src="@/assets/HOME.png" alt="Home Image" />
+    <div class="quote">
+      <p class="quote-text">A SINGLE SOURCE SOLUTION</p>
+      <p class="quote-text">TO YOUR HEALTH NEEDS</p>
+    </div>
+    <nav-bar></nav-bar>
+  </div>
 </template>
 
 <script>
-import Home from '@/components/Home.vue'
-import AddReminder from '@/components/AddReminder.vue'
-import ReminderDisplay from '@/components/ReminderDisplay.vue'
+import NavBar from "@/components/NavBar.vue";
 
 export default {
-  name: 'App',
-  components:{
-    WelcomeCpp,
-    AddCoin,
-    ProfitDisplay
+  name: "Home",
+  components: {
+    NavBar,
   },
-  data(){
-    return{
-      refreshComp:0
-    }
-   },
-  methods:{
-    change(){  
-      this.refreshComp += 1
-      }
-     }  
-    }
+};
 </script>
 
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 30px;
-
+<style scoped>
+.home-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-size: cover;
+  min-height: 100vh;
+  color: #fff;
 }
 
-#bg { 
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    width: 60%;
+.quote {
+  text-align: left;
+  font-family: Kanit;
+  font-size: 20px;
+  font-weight: 600;
+  line-height: normal;
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+}
+
+.quote-text {
+  margin: 0;
+}
+
+.quote-text:first-child {
+  color: #3cb26d;
 }
 </style>

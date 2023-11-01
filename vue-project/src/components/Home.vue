@@ -2,19 +2,15 @@
   <div class="home-page">
     <img src="@/assets/HOME.png" alt="Home Image" />
     <div class="quote">
-      <p class="quote-text">
-        A SINGLE SOURCE SOLUTION
-      </p>
-      <p class="quote-text">
-        TO YOUR HEALTH NEEDS
-      </p>
+      <p class="quote-text">A SINGLE SOURCE SOLUTION</p>
+      <p class="quote-text">TO YOUR HEALTH NEEDS</p>
     </div>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'Home',
+  name: "Home",
 };
 </script>
 
@@ -26,7 +22,7 @@ export default {
   justify-content: center;
   background-size: cover;
   min-height: 100vh;
-  color: #FFF;
+  color: #fff;
 }
 
 .quote {
@@ -45,6 +41,6 @@ export default {
 }
 
 .quote-text:first-child {
-  color: #3CB26D;
+  color: #3cb26d;
 }
 </style>
