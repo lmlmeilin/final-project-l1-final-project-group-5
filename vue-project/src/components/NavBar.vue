@@ -4,11 +4,25 @@
       <img src="@/assets/Logo.png" alt="PillPal Logo" />
     </div>
     <div class="nav-menu">
-      <button class="nav-button">Home</button>
-      <button class="nav-button">Reminder</button>
-      <button class="nav-button">Locator</button>
-      <button class="nav-button">Profile</button>
-      <button class="nav-button">LogOut</button>
+      <button class="nav-button">
+        <img src="@/assets/HomeIcon.png" alt="Home Icon" height="40px" />
+      </button>
+      <button class="nav-button">
+        <img
+          src="@/assets/ReminderIcon.png"
+          alt="Reminder Icon"
+          height="40px"
+        />
+      </button>
+      <button class="nav-button">
+        <img src="@/assets/LocatorIcon.png" alt="Locator Icon" height="40px" />
+      </button>
+      <button class="nav-button">
+        <img src="@/assets/ProfileIcon.png" alt="Profile Icon" height="40px" />
+      </button>
+      <button class="nav-button">
+        <img src="@/assets/LogoutIcon.png" alt="Logout Icon" height="40px" />
+      </button>
     </div>
     <div class="nav-about">
       <button class="nav-button" @click="goToAbout">About Us</button>
@@ -35,9 +49,9 @@ export default {
 }
 
 .nav-logo img {
-  width: 70px;
   height: 70px;
   background-color: #fff;
+  outline: lightgray;
 }
 
 .nav-menu {
@@ -67,15 +81,17 @@ export default {
 }
 
 .nav-about .nav-button {
-  width: 60px;
-  height: 10px;
+  width: 70px;
+  height: 20px;
   border-radius: 0px;
   text-decoration: underline;
-  font-size: 6px;
+  font-size: 11px;
+  position: absolute;
+  bottom: 0;
 }
 
 .nav-button:hover {
-  background: #3cb26d;
+  background: lightgray;
   color: #fff;
 }
 </style>
