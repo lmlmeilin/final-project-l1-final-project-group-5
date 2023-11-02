@@ -1,20 +1,12 @@
 <template>
+  <router-view />
+</template>
 
-  <div id ="nav">
-    <router-link to = "/"> Homes </router-link> |
-    <router-link to = "about"> About </router-link> 
-  </div>
-  
-  <router-view/>
-  
-  </template>
-  
-  <script>
-  export default{
-    name: 'App'
-  }
-  </script>
-  
+<script>
+export default {
+  name: "App",
+};
+</script>
 
 <style scoped>
 header {

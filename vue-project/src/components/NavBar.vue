@@ -4,28 +4,32 @@
       <img src="@/assets/Logo.png" alt="PillPal Logo" />
     </div>
     <div class="nav-menu">
-      <button class="nav-button">
+      <router-link to="/" class="nav-button">
         <img src="@/assets/HomeIcon.png" alt="Home Icon" height="40px" />
-      </button>
-      <button class="nav-button">
+      </router-link>
+
+      <router-link to="/reminder" class="nav-button">
         <img
           src="@/assets/ReminderIcon.png"
           alt="Reminder Icon"
           height="40px"
         />
-      </button>
-      <button class="nav-button">
+      </router-link>
+
+      <router-link to="/locator" class="nav-button">
         <img src="@/assets/LocatorIcon.png" alt="Locator Icon" height="40px" />
-      </button>
-      <button class="nav-button">
+      </router-link>
+
+      <router-link to="/profile" class="nav-button">
         <img src="@/assets/ProfileIcon.png" alt="Profile Icon" height="40px" />
-      </button>
-      <button class="nav-button">
+      </router-link>
+
+      <router-link to="/logout" class="nav-button">
         <img src="@/assets/LogoutIcon.png" alt="Logout Icon" height="40px" />
-      </button>
+      </router-link>
     </div>
     <div class="nav-about">
-      <button class="nav-button" @click="goToAbout">About Us</button>
+      <router-link to="about" class="nav-button">About Us</router-link>
     </div>
   </nav>
 </template>
@@ -77,7 +81,7 @@ export default {
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  margin: 4px 0; /* Add vertical margin between buttons */
+  margin: 4px 0;
 }
 
 .nav-about .nav-button {
