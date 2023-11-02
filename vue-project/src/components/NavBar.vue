@@ -7,63 +7,34 @@
       <router-link to="/" class="nav-button">
         <img src="@/assets/HomeIcon.png" alt="Home Icon" height="40px" />
       </router-link>
-
-      <router-link to="/notfound" class="nav-button">
+      <router-link to="/reminder" class="nav-button">
         <img
           src="@/assets/ReminderIcon.png"
           alt="Reminder Icon"
           height="40px"
         />
       </router-link>
-
-      <router-link to="/notfound" class="nav-button">
+      <router-link to="/locator" class="nav-button">
         <img src="@/assets/LocatorIcon.png" alt="Locator Icon" height="40px" />
       </router-link>
-
-      <router-link to="/notfound" class="nav-button">
+      <router-link to="/profile" class="nav-button">
         <img src="@/assets/ProfileIcon.png" alt="Profile Icon" height="40px" />
       </router-link>
-
-      <router-link to="/notfound" class="nav-button">
+      <router-link to="/logout" class="nav-button">
         <img src="@/assets/LogoutIcon.png" alt="Logout Icon" height="40px" />
       </router-link>
     </div>
     <div class="nav-about">
-      <router-link to="about" class="nav-button"
-        ><strong>About Us</strong></router-link
-      >
+      <router-link to="about" class="nav-button">About Us</router-link>
     </div>
   </nav>
 </template>
 
 <script>
-import { getAuth, onAuthStateChanged, signOut } from "firebase/auth";
-
 export default {
-  name: "NavBar",
-
-  data() {
-    return {
-      user: null,
-    };
-  },
-
-  mounted() {
-    const auth = getAuth();
-    onAuthStateChanged(auth, (user) => {
-      this.user = user;
-    });
-  },
-
   methods: {
-    async logout() {
-      const auth = getAuth();
-      try {
-        await signOut(auth);
-        this.$router.push({ name: "Login" }); // Replace "Login" with the actual name of your sign-in route
-      } catch (error) {
-        console.error("Sign out error", error);
-      }
+    goToAbout() {
+      // Add your route navigation logic to About page here
     },
   },
 };
@@ -83,12 +54,6 @@ export default {
   outline: lightgray;
 }
 
-.nav-menu {
-  display: flex;
-  flex-direction: column; /* Arrange the buttons vertically */
-  align-items: left;
-}
-
 .nav-button {
   width: 70px;
   height: 70px;
@@ -106,7 +71,7 @@ export default {
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  margin: 4px 0;
+  margin: 15px 0; /* Add vertical margin between buttons */
 }
 
 .nav-about .nav-button {

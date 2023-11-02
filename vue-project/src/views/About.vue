@@ -76,9 +76,10 @@ export default {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-left: 50px;
+  margin-left: 65px;
   margin-top: 20px;
   border: 4px solid #3cb26d;
+  border-radius: 5px;
   padding: 20px;
   text-align: center;
   max-width: 80%;
