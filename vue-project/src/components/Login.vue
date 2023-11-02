@@ -25,7 +25,7 @@ export default {
 
   mounted() {
     const uiConfig = {
-      signInSuccessUrl: "/home",
+      signInSuccessUrl: "/",
       signInOptions: [
         firebase.auth.GoogleAuthProvider.PROVIDER_ID,
         firebase.auth.EmailAuthProvider.PROVIDER_ID,
@@ -33,7 +33,7 @@ export default {
       callbacks: {
         signInSuccessWithAuthResult(authResult) {
           // Redirect the user to the Home.vue page
-          router.push(authResult.authResult?.signInSuccessUrl || "/home");
+          router.push(authResult.authResult?.signInSuccessUrl || "/");
           return false;
         },
       },
