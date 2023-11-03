@@ -22,9 +22,64 @@
           </p>
         </div>
       </div>
-      <div class="our-team"></div>
-      <div class="FAQs"></div>
-      <div class="foot"></div>
+      <div class="our-team">
+        <div class="section-title">
+          <h4 class="w-w-d">Our Team</h4>
+        </div>
+        <div class="team-members">
+          <div class="team-member">
+            <img src="@/assets/TeamProfile.png" alt="CAO CHUHAO" />
+            <p><strong>CAO CHUHAO</strong></p>
+          </div>
+          <div class="team-member">
+            <img src="@/assets/TeamProfile.png" alt="DANG XUEHAN" />
+            <p><strong>DANG XUEHAN</strong></p>
+          </div>
+          <div class="team-member">
+            <img src="@/assets/TeamProfile.png" alt="HAN YUNXI" />
+            <p><strong>HAN YUNXI</strong></p>
+          </div>
+          <div class="team-member">
+            <img src="@/assets/TeamProfile.png" alt="LOW MEI LIN" />
+            <p><strong>LOW MEI LIN</strong></p>
+          </div>
+        </div>
+        <div class="contactUs">
+          <img src="@/assets/ContactUs.png" alt="ContactUs" />
+        </div>
+      </div>
+
+      <div class="FAQs">
+        <div class="section-title">
+          <h4 class="w-w-d">FAQs</h4>
+        </div>
+        <div class="faq-list">
+          <!-- FAQ item 1 -->
+          <div class="faq-item">
+            <div class="question">
+              <span>Frequently Asked Question 1?</span>
+              <button @click="toggleAnswer(1)">Toggle Answer</button>
+            </div>
+            <div class="answer" v-if="showAnswer[1]">
+              <p>Answer to Frequently Asked Question 1.</p>
+            </div>
+          </div>
+
+          <!-- FAQ item 2 -->
+          <div class="faq-item">
+            <div class="question">
+              <span>Frequently Asked Question 2?</span>
+              <button @click="toggleAnswer(2)">Toggle Answer</button>
+            </div>
+            <div class="answer" v-if="showAnswer[2]">
+              <p>Answer to Frequently Asked Question 2.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="foot">
+        <img src="@/assets/Foot.png" alt="Foot" />
+      </div>
     </div>
   </div>
 </template>
@@ -36,6 +91,17 @@ export default {
   name: "About",
   components: {
     NavBar, // Register the NavBar component
+  },
+  data() {
+    return {
+      showAnswer: {}, // Use an object to track which answers are shown
+    };
+  },
+  methods: {
+    toggleAnswer(index) {
+      // Toggle the answer for the FAQ at the given index
+      this.showAnswer[index] = !this.showAnswer[index];
+    },
   },
 };
 </script>
@@ -64,13 +130,13 @@ export default {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  margin: 0; /* Remove margin for body or other elements */
+  margin: 0;
   padding: 30px;
 }
 
 .background h3 {
   font-size: 90px;
-  margin: 0; /* Remove margin for the h3 element */
+  margin: 0;
   color: #fff;
   outline: gray;
   text-shadow: gray;
@@ -87,7 +153,7 @@ export default {
   padding: 20px;
   text-align: center;
   max-width: 80%;
-  flex-direction: column; /* Add this line */
+  flex-direction: column;
 }
 
 .section-title {
@@ -122,5 +188,93 @@ export default {
 .text-box {
   color: #000;
   font-size: 20px;
+}
+
+.our-team {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 60px;
+  margin-right: 155px;
+}
+
+.team-members {
+  display: flex;
+  justify-content: center;
+  margin-top: 30px;
+}
+
+.team-member {
+  text-align: center;
+  margin: 20px;
+}
+
+.team-member img {
+  max-width: 150px;
+  max-height: 150px;
+  border-radius: 50%;
+}
+
+.team-member p {
+  font-weight: bold;
+  margin-top: 10px;
+}
+
+.contactUs img {
+  max-width: 300px;
+  max-height: 300px;
+}
+
+.FAQs {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 60px;
+  border: 4px solid #3cb26d;
+  border-radius: 5px;
+  max-width: 80%;
+  flex-direction: column;
+  margin-left: 95px;
+}
+
+.faq-list {
+  width: 100%;
+}
+
+.faq-item {
+  border: 2px solid #3cb26d;
+  border-radius: 5px;
+  margin: 10px 0;
+  padding: 10px;
+}
+
+.question {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+}
+
+.answer {
+  display: none;
+  padding: 10px;
+}
+
+.answer p {
+  margin: 0;
+}
+
+.faq-item.active .answer {
+  display: block;
+}
+
+.foot img {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 40px;
+  margin-left: 628px;
+
+  max-height: 40px;
 }
 </style>

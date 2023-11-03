@@ -33,7 +33,7 @@
       </router-link>
     </div>
     <div class="nav-about">
-      <router-link to="about" class="nav-button">About Us</router-link>
+      <router-link to="about" class="nav-button"><b>About Us</b></router-link>
     </div>
   </nav>
 </template>
