@@ -5,23 +5,31 @@
     </div>
     <div class="nav-menu">
       <router-link to="/" class="nav-button">
-        <img src="@/assets/HomeIcon.png" alt="Home Icon" height="40px" />
+        <img src="@/assets/HomeIcon.png" alt="Home Icon" class="but-img" />
       </router-link>
       <router-link to="/reminder" class="nav-button">
         <img
           src="@/assets/ReminderIcon.png"
           alt="Reminder Icon"
-          height="40px"
+          class="but-img"
         />
       </router-link>
       <router-link to="/locator" class="nav-button">
-        <img src="@/assets/LocatorIcon.png" alt="Locator Icon" height="40px" />
+        <img
+          src="@/assets/LocatorIcon.png"
+          alt="Locator Icon"
+          class="but-img"
+        />
       </router-link>
       <router-link to="/profile" class="nav-button">
-        <img src="@/assets/ProfileIcon.png" alt="Profile Icon" height="40px" />
+        <img
+          src="@/assets/ProfileIcon.png"
+          alt="Profile Icon"
+          class="but-img"
+        />
       </router-link>
       <router-link to="/logout" class="nav-button">
-        <img src="@/assets/LogoutIcon.png" alt="Logout Icon" height="40px" />
+        <img src="@/assets/LogoutIcon.png" alt="Logout Icon" class="but-img" />
       </router-link>
     </div>
     <div class="nav-about">
@@ -74,6 +82,9 @@ export default {
   margin: 15px 0; /* Add vertical margin between buttons */
 }
 
+.but-img {
+  height: 40px;
+}
 .nav-about .nav-button {
   width: 70px;
   height: 20px;

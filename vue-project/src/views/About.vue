@@ -7,7 +7,7 @@
       </div>
       <div class="what-we-do">
         <div class="section-title">
-          <h4 style="color: #3cb26d">What We Do</h4>
+          <h4 class="w-w-d">What We Do</h4>
         </div>
         <div class="text-box">
           <p>
@@ -47,6 +47,10 @@ export default {
   align-items: stretch;
   min-height: 100vh;
   overflow: hidden;
+}
+
+.w-w-d {
+  color: #3cb26d;
 }
 
 .background {
