@@ -27,7 +27,6 @@ async function display(){
 let allDocuments = await getDocs(collection(db,"Portfolio"))    
   // let z = await db.collection("Portfolio").get() 
 let index = 1
-let totalProfit = 0
 
 allDocuments.forEach((docs) => {
 
@@ -64,11 +63,12 @@ allDocuments.forEach((docs) => {
   deleteButton.onclick =  function(){
     deleteInstrument(med)
   }
+  index += 1 
 })     
   
 display()
 
-async function deleteInstrument(Med){
+async function deleteInstrument(med){
   alert("You are going to delete " + med)
   await deleteDoc(doc(db,"Portfolio", med))
   console.log("Document successfully deleted!" , med);
