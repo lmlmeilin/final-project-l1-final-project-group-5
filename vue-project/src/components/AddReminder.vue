@@ -39,9 +39,16 @@
 import firebaseApp from '../firebase.js';
 import { getFirestore } from "firebase/firestore"
 import { doc, setDoc } from "firebase/firestore";
+import { getAuth} from "firebase/auth";
 const db = getFirestore(firebaseApp);
 
 export default {
+  data(){
+    return{
+      med:"", dosage:"", freq:"", baFood:""
+    }
+  },
+
 methods: {
   async savetofs(){   
    console.log("IN AC") 
@@ -52,8 +59,7 @@ methods: {
   let baFood =  document.getElementById("baFood").value
 
   alert(" Saving your data for Med : " + med) 
-  // last class-- > firebase 8 --> await db.collection("Portfolio").doc(coin).set(...
-  // We change to firebase 9     
+  
   try{
     const docRef = await setDoc(doc(db, "Portfolio", med),{
     Med: med , Dosage : dosage, Freq: freq, BaFood : baFood
