@@ -61,7 +61,7 @@ methods: {
   alert(" Saving your data for Med : " + med) 
   
   try{
-    const docRef = await setDoc(doc(db, "Portfolio", med),{
+    const docRef = await setDoc(doc(db, "reminder", med),{
     Med: med , Dosage : dosage, Freq: freq, BaFood : baFood
     })
     console.log(docRef)
