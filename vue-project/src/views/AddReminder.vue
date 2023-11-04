@@ -55,14 +55,40 @@
 </template>
 
 <script>
-
+import firebaseApp from '../firebase.js';
+import { getFirestore } from "firebase/firestore"
+import { doc, setDoc } from "firebase/firestore";
 import NavBar from "@/components/NavBar.vue"; // Import the NavBar component
+const db = getFirestore(firebaseApp);
 
 export default {
   name: "addReminder",
   components: {
     NavBar, // Register the NavBar component
   },
+  methods: {
+  async savetofs(){   
+   console.log("IN AC") 
+  let med  = document.getElementById("med").value
+  let dosage  = document.getElementById("dosage").value
+  let freq  = document.getElementById("freq").value
+  let baFood =  document.getElementById("baFood").value
+  alert(" Saving your data for Coin : " + med) 
+  // last class-- > firebase 8 --> await db.collection("Portfolio").doc(coin).set(...
+  // We change to firebase 9     
+  try{
+    const docRef = await setDoc(doc(db, "reminder", med),{
+    Med: med , Dosage : dosage, Freq: freq, BaFood : baFood
+    })
+    console.log(docRef)
+    document.getElementById('myform').reset();
+    this.$emit("added")
+    }
+  catch(error) {
+      console.error("Error adding document: ", error);
+  }
+    }
+}
 };
 </script>
 
@@ -71,7 +97,7 @@ export default {
   display: flex;
   flex-direction: row;
   align-items: stretch;
-  height: 100vh; /* 100% of the viewport height */
+  height: 100vh;
 }
 
 .h1 {
@@ -83,7 +109,7 @@ export default {
 }
 
 #myform {
-  max-width: 953px; /* Set a maximum width for the form to control its width */
+  max-width: 953px; 
   width: 100%;
   padding: 20px;
   background-color: #f1f1f1;
