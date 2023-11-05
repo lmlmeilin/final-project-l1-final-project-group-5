@@ -21,14 +21,14 @@
           class="but-img"
         />
       </router-link>
-      <router-link to="/addReminder" class="nav-button"> 
+      <router-link to="/addReminder" class="nav-button">
         <img
           src="@/assets/ProfileIcon.png"
           alt="Profile Icon"
           class="but-img"
         />
       </router-link>
-      <router-link to="/logout" class="nav-button">
+      <router-link to="/logout" class="nav-button" @click="logout">
         <img src="@/assets/LogoutIcon.png" alt="Logout Icon" class="but-img" />
       </router-link>
     </div>
@@ -39,10 +39,18 @@
 </template>
 
 <script>
+import { signOut } from "firebase/auth";
+
 export default {
   methods: {
-    goToAbout() {
-      // Add your route navigation logic to About page here
+    logout() {
+      signOut(this.$root.auth)
+        .then(() => {
+          this.$router.push("/"); // Redirect to the Login page after logout
+        })
+        .catch((error) => {
+          console.error("Error logging out:", error);
+        });
     },
   },
 };
