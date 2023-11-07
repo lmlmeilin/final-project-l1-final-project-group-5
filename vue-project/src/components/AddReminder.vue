@@ -1,8 +1,13 @@
 <template>
-  
+    
     <div class ="addRem">
+          <div class = "container">
+            <h1 class = "header">Create New Reminder</h1>
+          </div>
+  
+          <br>
           <form id="myform">
-              <h1 class = "h1">Create New Reminder</h1>
+              <br>
               <h2 class = "h2">Add New Reminder, Reminder #<span id="reminder-number">1</span></h2>
     
               <div class = "formi" >            
@@ -103,32 +108,47 @@ export default {
 
 <style scoped>
 
-.h1 {
-  text-align: left;
+.container {
+  margin-top: 650px;
+  border-radius: 32px;
+  background-color: #3cb26d; 
+  height: 100px;
+  width: flex;
+
+}
+
+.header {
+  color: white;
+  font-family: Kanit;
+  text-align: center;
 }
 
 .h2 {
+  font-family: Kanit;
+  text-indent: 65px;
   text-align: left;
 }
 
 #myform {
-  max-width: 953px; 
-  width: 100%;
-  padding: 20px;
-  background-color: #f1f1f1;
-  border: 1px solid #ccc;
-  border-radius: 5px;
+  background-color: #D9D9D9;
+  border-radius: 32px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+
 }
 
 .formi {
-  margin: 1;
+  margin: 0 auto;
   text-align: left;
-  width: 80%;
+  width: 90%;
 }
 
 .createReminder {
   text-align: center;
 }
+
+.addRem {
+  background: white;
+}
+
 </style>
 

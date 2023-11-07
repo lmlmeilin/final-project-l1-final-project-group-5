@@ -36,9 +36,10 @@
   <style>
 .nav-bar {
   width: 100%;
-  min-height: 100vh;
+  height: 100%;
   /* Add other styling for the NavBar as needed */
 }
+
 
   </style>
   
