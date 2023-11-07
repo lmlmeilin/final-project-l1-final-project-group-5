@@ -7,7 +7,7 @@
       <router-link to="/" class="nav-button">
         <img src="@/assets/HomeIcon.png" alt="Home Icon" class="but-img" />
       </router-link>
-      <router-link to="/reminder" class="nav-button">
+      <router-link to="/addReminderView" class="nav-button">
         <img
           src="@/assets/ReminderIcon.png"
           alt="Reminder Icon"
@@ -21,14 +21,14 @@
           class="but-img"
         />
       </router-link>
-      <router-link to="/addReminderView" class="nav-button"> 
+      <router-link to="/addReminder" class="nav-button">
         <img
           src="@/assets/ProfileIcon.png"
           alt="Profile Icon"
           class="but-img"
         />
       </router-link>
-      <router-link to="/logout" class="nav-button">
+      <router-link to="/logout" class="nav-button" @click="logout">
         <img src="@/assets/LogoutIcon.png" alt="Logout Icon" class="but-img" />
       </router-link>
     </div>
@@ -39,11 +39,11 @@
 </template>
 
 <script>
+import Logout from "@/components/Logout.vue";
+
 export default {
-  methods: {
-    goToAbout() {
-      // Add your route navigation logic to About page here
-    },
+  components: {
+    Logout,
   },
 };
 </script>
@@ -54,6 +54,7 @@ export default {
   display: flex;
   flex-direction: column;
   align-items: left;
+  width: min-content;
 }
 
 .nav-logo img {
