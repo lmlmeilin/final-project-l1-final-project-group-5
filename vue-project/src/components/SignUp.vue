@@ -65,7 +65,7 @@ export default {
         return false;
       }
 
-      // Use a regular expression to check if the email is in a valid format
+      // check if the email is in a valid format
       const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
       if (!emailRegex.test(this.email)) {
         this.errorMessage = "Invalid email format.";
