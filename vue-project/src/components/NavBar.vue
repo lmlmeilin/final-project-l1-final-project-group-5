@@ -23,7 +23,7 @@
           class="but-img"
         />
       </router-link>
-      <router-link to="/addReminder" class="nav-button">
+      <router-link to="/profile" class="nav-button">
         <img
           src="@/assets/ProfileIcon.png"
           alt="Profile Icon"

@@ -8,6 +8,7 @@ import SignUp from '@/components/SignUp.vue'
 import LogOut from '@/components/LogOut.vue'
 import addLocator from '@/views/Locator.vue'
 import ResetPassword from '@/components/ResetPassword.vue'
+import Profile from '@/views/Profile.vue'
 
 const routes = [
   {
@@ -60,6 +61,12 @@ const routes = [
     path: '/reset',
     name: 'ResetPassword',
     component: ResetPassword
+  },
+
+  {
+    path: '/profile',
+    name: 'Profile',
+    component: Profile
   },
 
 ]
