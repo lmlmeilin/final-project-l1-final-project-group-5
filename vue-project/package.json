@@ -10,7 +10,8 @@
   "dependencies": {
     "firebase": "^10.5.2",
     "firebaseui": "^6.1.0",
-    "vue": "^3.3.4"
+    "vue": "^3.3.4",
+    "vue2-google-maps": "^0.10.7"
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^4.4.0",

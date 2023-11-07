@@ -1,6 +1,5 @@
 <template>
   <div>
-    <h3>Clinic Locator</h3>
     <div>
       <input id="searchInput" v-model="searchQuery" placeholder="Search clinics" @input="updateClinicList" />
       <select id="medicineFilter" v-model="selectedMedicine" @change="updateClinicList">
@@ -28,7 +27,6 @@
         <p>Open 24 Hours: {{ clinic.openAllday ? 'Yes' : 'No' }}</p>
       </div>
     </div>
-    <div id="map" style="height: 400px; width: 100%;"></div>
   </div>
 </template>
 
@@ -65,6 +63,7 @@ export default {
   },
   mounted() {
     this.updateClinicList();
+
     // Initialization code for the map should go here.
     // You may need to convert your vanilla JS map initialization code
     // to Vue's approach, possibly using Vue's lifecycle hooks.
