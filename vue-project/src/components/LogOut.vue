@@ -12,7 +12,7 @@ export default {
     logout() {
       signOut(this.$root.auth)
         .then(() => {
-          this.$router.push("/login"); // Redirect to the Login page after logout (Home for now)
+          this.$router.push("/"); // Redirect to the Login page after logout (Home for now)
         })
         .catch((error) => {
           console.error("Error logging out:", error);

@@ -54,25 +54,13 @@
           <h4 class="w-w-d">FAQs</h4>
         </div>
         <div class="faq-list">
-          <!-- FAQ item 1 -->
-          <div class="faq-item">
-            <div class="question">
-              <span>Frequently Asked Question 1?</span>
-              <button @click="toggleAnswer(1)">Toggle Answer</button>
+          <div class="faq-item" v-for="(faqItem, index) in faq" :key="index">
+            <div class="question" @click="toggleAnswer(index)">
+              <span>{{ faqItem.question }}</span>
+              <button>{{ showAnswer[index] ? "^" : "v" }}</button>
             </div>
-            <div class="answer" v-if="showAnswer[1]">
-              <p>Answer to Frequently Asked Question 1.</p>
-            </div>
-          </div>
-
-          <!-- FAQ item 2 -->
-          <div class="faq-item">
-            <div class="question">
-              <span>Frequently Asked Question 2?</span>
-              <button @click="toggleAnswer(2)">Toggle Answer</button>
-            </div>
-            <div class="answer" v-if="showAnswer[2]">
-              <p>Answer to Frequently Asked Question 2.</p>
+            <div class="answer" v-if="showAnswer[index]">
+              <p>{{ faqItem.answer }}</p>
             </div>
           </div>
         </div>
@@ -86,22 +74,48 @@
 
 <script>
 import NavBar from "@/components/NavBar.vue"; // Import the NavBar component
+import { ref } from "vue"; // Import ref from Vue 3
 
 export default {
   name: "About",
   components: {
     NavBar, // Register the NavBar component
   },
-  data() {
-    return {
-      showAnswer: {}, // Use an object to track which answers are shown
-    };
-  },
-  methods: {
-    toggleAnswer(index) {
+  setup() {
+    const showAnswer = ref({}); // Create a reactive ref for showAnswer
+    const faq = [
+      {
+        question: "What is PillPal, and how does it work?",
+        answer:
+          "PillPal is an innovative website application designed to enhance medication adherence among patients. It provides three key features: medication reminders, usage tracking, and a healthcare facility locator. Users receive timely reminders for their medications, gain access to their medication regimen overview, and can locate the nearest medical facility to refill their prescriptions.",
+      },
+      {
+        question: "Why is medication adherence so important?",
+        answer:
+          "Medication adherence is crucial because it ensures that patients take their prescribed medications as recommended by healthcare providers. Failing to adhere to medication plans can lead to suboptimal disease control, adverse health outcomes, and increased healthcare costs.",
+      },
+      {
+        question: "How can PillPal help improve medication adherence?",
+        answer:
+          "PillPal helps improve medication adherence by sending timely reminders to users, providing a comprehensive overview of their medication regimen, and assisting in locating the nearest medical facility for prescription refills. These features empower users to stay on track with their medication plans.",
+      },
+      {
+        question: "Are there any costs associated with using PillPal?",
+        answer:
+          "PillPal is currently a free application available for use by patients and caregivers. There are no subscription fees or hidden costs associated with using the app.",
+      },
+    ];
+
+    const toggleAnswer = (index) => {
       // Toggle the answer for the FAQ at the given index
-      this.showAnswer[index] = !this.showAnswer[index];
-    },
+      showAnswer.value[index] = !showAnswer.value[index];
+    };
+
+    return {
+      showAnswer,
+      faq,
+      toggleAnswer,
+    };
   },
 };
 </script>
@@ -258,6 +272,7 @@ export default {
 .answer {
   display: none;
   padding: 10px;
+  color: #000;
 }
 
 .answer p {

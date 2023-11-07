@@ -4,7 +4,7 @@
       <img src="@/assets/Logo.png" alt="PillPal Logo" />
     </div>
     <div class="nav-menu">
-      <router-link to="/" class="nav-button">
+      <router-link to="/home" class="nav-button">
         <img src="@/assets/HomeIcon.png" alt="Home Icon" class="but-img" />
       </router-link>
       <router-link to="/addReminderView" class="nav-button">

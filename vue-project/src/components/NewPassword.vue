@@ -25,7 +25,7 @@
       </form>
       <p class="reset-password-signup-prompt">
         Don’t have an account?
-        <router-link to="/signup" class="reset-password-signup-link"
+        <router-link to="/" class="reset-password-signup-link"
           >Sign up now!</router-link
         >
       </p>

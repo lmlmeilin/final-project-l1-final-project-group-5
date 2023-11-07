@@ -4,10 +4,11 @@ import About from '@/views/About.vue'
 import NotFound from '@/views/NotFound.vue'
 import addReminderView from '@/views/AddReminderView.vue'
 import Login from '@/components/Login.vue'
+import SignUp from '@/components/SignUp.vue'
 
 const routes = [
   {
-    path: '/',
+    path: '/home',
     name: 'Home',
     component: Home
   },
@@ -29,9 +30,15 @@ const routes = [
   },
 
   {
-    path: '/login',
+    path: '/',
     name: 'Login',
     component: Login
+  },
+
+  {
+    path: '/signup',
+    name: 'SignUp',
+    component: SignUp
   },
 
 ]
