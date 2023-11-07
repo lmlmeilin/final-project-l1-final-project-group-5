@@ -6,6 +6,7 @@ import addReminderView from '@/views/AddReminderView.vue'
 import Login from '@/components/Login.vue'
 import SignUp from '@/components/SignUp.vue'
 import LogOut from '@/components/LogOut.vue'
+import ResetPassword from '@/components/ResetPassword.vue'
 
 const routes = [
   {
@@ -46,6 +47,12 @@ const routes = [
     path: '/logout',
     name: 'LogOut',
     component: LogOut
+  },
+
+  {
+    path: '/reset',
+    name: 'ResetPassword',
+    component: ResetPassword
   },
 
 ]

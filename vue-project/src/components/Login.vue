@@ -9,6 +9,17 @@
         </p>
       </div>
       <div id="firebaseui-auth-container"></div>
+      <div class="reset">
+        <p>
+          Forget your password?
+          <router-link to="/reset" class="reset-link"
+            >Reset Password</router-link
+          >
+        </p>
+      </div>
+      <div v-if="showEmailNotFoundError" class="error-message">
+        Email not found. Please sign up.
+      </div>
     </div>
   </div>
 </template>
@@ -22,11 +33,15 @@ import "firebaseui/dist/firebaseui.css";
 export default {
   name: "Login",
 
+  data() {
+    return {
+      showEmailNotFoundError: false,
+    };
+  },
+
   mounted() {
-    // If already an instance is created, get it
     var ui = firebaseui.auth.AuthUI.getInstance();
 
-    // For creating first instance
     if (!ui) {
       ui = new firebaseui.auth.AuthUI(firebase.auth());
     }
@@ -37,6 +52,13 @@ export default {
         firebase.auth.GoogleAuthProvider.PROVIDER_ID,
         firebase.auth.EmailAuthProvider.PROVIDER_ID,
       ],
+      callbacks: {
+        signInFailure: (error) => {
+          if (error.code === "auth/user-not-found") {
+            this.showEmailNotFoundError = true;
+          }
+        },
+      },
     };
     ui.start("#firebaseui-auth-container", uiConfig);
   },
@@ -101,6 +123,13 @@ export default {
 
 #firebaseui-auth-container {
   margin: 60px;
+  text-align: center;
+}
+
+.error-message {
+  color: red;
+  font-size: 20px;
+  margin: 20px 0;
   text-align: center;
 }
 </style>
