@@ -2,7 +2,7 @@ import { createRouter, createWebHistory } from 'vue-router'
 import Home from '@/views/Home.vue'
 import About from '@/views/About.vue'
 import NotFound from '@/views/NotFound.vue'
-import addReminder from '@/views/AddReminder.vue'
+import addReminderView from '@/views/AddReminderView.vue'
 
 const routes = [
   {
@@ -22,9 +22,9 @@ const routes = [
   },
 
   {
-    path: '/addReminder',
-    name: 'addReminder',
-    component: addReminder
+    path: '/addReminderView',
+    name: 'addReminderView',
+    component: addReminderView
   },
 
 ]
