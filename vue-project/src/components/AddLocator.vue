@@ -33,7 +33,6 @@
 </template>
 
 <script>
-// You need to convert your external JS to a module or inline script here.
 export default {
   name: 'AddLocator',
   data() {
