@@ -5,10 +5,45 @@
         <h2>Sign Up</h2>
         <p>
           Already have an account?
-          <router-link to="/login" class="signup-link">Log in</router-link>
+          <router-link to="/" class="signup-link">Log in</router-link>
         </p>
       </div>
-      <div id="firebaseui-auth-container"></div>
+
+      <div class="form">
+        <div class="form-group">
+          <label for="email">Email:</label>
+          <input
+            type="email"
+            id="email"
+            v-model="email"
+            placeholder="Enter your email"
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="password">Password:</label>
+          <input
+            type="password"
+            id="password"
+            v-model="password"
+            placeholder="Enter a strong password (at least 6 characters with numbers and letters)"
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="confirmPassword">Confirm Password:</label>
+          <input
+            type="password"
+            id="confirmPassword"
+            v-model="confirmPassword"
+            placeholder="Re-enter your password"
+          />
+        </div>
+      </div>
+
+      <button @click="registerUser">Sign Up</button>
+
+      <div v-if="errorMessage" class="error-message">{{ errorMessage }}</div>
     </div>
   </div>
 </template>
@@ -62,7 +97,15 @@ export default {
         return false;
       }
 
-      // check if the email is in a valid format
+      // Check if the password meets the criteria (at least 6 characters and a mix of numbers and letters)
+      const passwordRegex = /^(?=.*[A-Za-z])(?=.*\d).{6,}$/;
+      if (!passwordRegex.test(this.password)) {
+        this.errorMessage =
+          "Password must be at least 6 characters and contain a mix of numbers and letters.";
+        return false;
+      }
+
+      // Check if the email is in a valid format
       const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
       if (!emailRegex.test(this.email)) {
         this.errorMessage = "Invalid email format.";
@@ -134,5 +177,41 @@ export default {
 #firebaseui-auth-container {
   margin: 60px;
   text-align: center;
+}
+.form {
+  margin: 20px 0;
+}
+
+.form-group {
+  margin-bottom: 10px;
+}
+
+label {
+  display: block;
+  font-weight: 600;
+}
+
+input {
+  width: 100%;
+  padding: 8px;
+  border: 2px solid #3cb26d;
+  border-radius: 4px;
+  font-size: 16px;
+  margin-right: 10px;
+}
+
+button {
+  background-color: #3cb26d;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 10px 20px;
+  cursor: pointer;
+}
+
+.error-message {
+  color: red;
+  font-size: 14px;
+  margin-top: 10px;
 }
 </style>
