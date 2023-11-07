@@ -107,16 +107,22 @@ export default {
 </script>
 
 <style scoped>
+.header {
+  display: flex; 
+  justify-content: center;
+  align-items: center; 
+  height: 60px; 
+}
+
 .content {
-  display: flex; /* Establishes a flex container */
-  align-items: flex-start; /* Aligns flex items to the top */
+  display: flex; 
+  align-items: flex-start; 
 }
 
 .nav-bar {
-  width: 90px; /* Fixed width for the NavBar */
+  width: 90px;
   height: 100%; 
-  margin-right: 400px;/* Adjust height as needed, perhaps the full height of the container */
-  /* Additional styling as needed */
+  margin-right: 420px;
 }
 
 #map {
