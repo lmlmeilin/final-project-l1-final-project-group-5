@@ -1,11 +1,9 @@
-
+<!DOCTYPE html>
 <html>
   <head>
     <title>Add Map</title>
     <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
-
-    <link rel="stylesheet" type="text/css" href="./style.css" />
-    <script type="module" src="./index.js"></script>
+    <script type="module" src="./Index.js"></script>
   </head>
 
   <body>
@@ -40,30 +38,102 @@
     </script>
 
     <div id="app">
-      <div>
-        <input v-model="searchQuery" placeholder="Search clinics">
-        <select v-model="selectedMedicine">
-          <option value="">All Medicines</option>
-          <option v-for="medicine in medicines" :value="medicine">{{ medicine }}</option>
-        </select>
         <div>
-          <div v-for="clinic in filteredClinics" :key="clinic.id">
-            <h2>{{ clinic.name }}</h2>
-            <p>Location: {{ clinic.location }}</p>
-            <p>Medicine: {{ clinic.medicine }}</p>
-          </div>
+          <input id="searchInput" placeholder="Search clinics">
+          <select id="medicineFilter">
+            <option value="">All Medicines</option>
+            <option value="Medicine A">Medicine A</option>
+            <option value="Medicine B">Medicine B</option>
+            <option value="Medicine C">Medicine C</option>
+            <!-- Add more filter options as needed -->
+          </select>
+          <select id="holidayFilter">
+            <option value="">All Clinics</option>
+            <option value="Open on Holidays">Open on Holidays</option>
+            <option value="Open on Sunday">Open on Sunday</option>
+            <option value="Open 24 Hours">Open 24 Hours</option>
+            <!-- Add more filter options as needed -->
+          </select>
         </div>
-      </div>
-      <div id="map" style="height: 400px; width: 100%;"></div>
+        <div id="clinic-list"></div>
+        <div id="map" style="height: 400px; width: 100%;"></div>
+    
+        <script>
+          const clinics = [
+            {
+              name: "Clinic A",
+              location: "Location A",
+              medicine: ["Medicine A", "Medicine B"],
+              openOnHolidays: true,
+              openOnSunday: true,
+              openAllday: false,
+            },
+            {
+              name: "Clinic B",
+              location: "Location B",
+              medicine: ["Medicine B"],
+              openOnHolidays: false,
+              openOnSunday: false,
+              openAllday: true,
+            },
+            // Add more clinics as needed
+          ];
+    
+          const clinicListElement = document.getElementById("clinic-list");
+          const searchInput = document.getElementById("searchInput");
+          const medicineFilter = document.getElementById("medicineFilter");
+          const holidayFilter = document.getElementById("holidayFilter");
+    
+          function updateClinicList() {
+            const searchQuery = searchInput.value.toLowerCase();
+            const selectedMedicine = medicineFilter.value;
+            const selectedHolidayFilter = holidayFilter.value;
+    
+            const filteredClinics = clinics.filter((clinic) => {
+              const medicineCondition = selectedMedicine === "" || (Array.isArray(clinic.medicine) ? clinic.medicine.includes(selectedMedicine) : clinic.medicine === selectedMedicine);
+              const holidayCondition = selectedHolidayFilter === "" || (selectedHolidayFilter === "Open on Holidays" && clinic.openOnHolidays) || (selectedHolidayFilter === "Open on Sunday" && clinic.openOnSunday) || (selectedHolidayFilter === "Open 24 Hours" && clinic.openAllday);
+              return (
+                clinic.name.toLowerCase().includes(searchQuery) &&
+                medicineCondition &&
+                holidayCondition
+              );
+            });
+    
+            clinicListElement.innerHTML = "";
+            filteredClinics.forEach((clinic) => {
+              clinicListElement.innerHTML += `
+                <div>
+                  <h2>${clinic.name}</h2>
+                  <p>Location: ${clinic.location}</p>
+                  <p>Medicine: ${Array.isArray(clinic.medicine) ? clinic.medicine.join(', ') : clinic.medicine}</p>
+                  <p>Open on Holidays: ${clinic.openOnHolidays ? "Yes" : "No"}</p>
+                  <p>Open on Sunday: ${clinic.openOnSunday ? "Yes" : "No"}</p>
+                  <p>Open 24 Hours: ${clinic.openAllday ? "Yes" : "No"}</p>
+                </div>
+              `;
+            });
+          }
+    
+          searchInput.addEventListener("input", updateClinicList);
+          medicineFilter.addEventListener("change", updateClinicList);
+          holidayFilter.addEventListener("change", updateClinicList);
+    
+        </script>
     </div>
   </body>
 
   <style>
     #map {
-      height: 400px;
-      width: 50%;
+      height: 300px;
+      width: 25%;
+      margin: auto;
     }
+
+    h3 {
+      background-color: #4CAF50; 
+      color: #ffffff; 
+      padding: 10px; 
+    }
+
   </style>
 </html>
-
-<!--AIzaSyB41DRUbKWJHPxaFjMAwdrzWzbVKartNGg -->
