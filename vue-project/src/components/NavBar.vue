@@ -1,7 +1,9 @@
 <template>
   <nav class="nav-bar">
     <div class="nav-logo">
-      <img src="@/assets/Logo.png" alt="PillPal Logo" />
+      <router-link to="about" class="nav-button"
+        ><img src="@/assets/Logo.png" alt="PillPal Logo"
+      /></router-link>
     </div>
     <div class="nav-menu">
       <router-link to="/home" class="nav-button">
@@ -29,9 +31,6 @@
         />
       </router-link>
       <Logout />
-    </div>
-    <div class="nav-about">
-      <router-link to="about" class="nav-button"><b>About Us</b></router-link>
     </div>
   </nav>
 </template>

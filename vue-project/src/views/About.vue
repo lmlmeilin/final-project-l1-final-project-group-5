@@ -54,12 +54,17 @@
           <h4 class="w-w-d">FAQs</h4>
         </div>
         <div class="faq-list">
-          <div class="faq-item" v-for="(faqItem, index) in faq" :key="index">
+          <div
+            class="faq-item"
+            v-for="(faqItem, index) in faq"
+            :key="index"
+            :class="{ active: showAnswer[index] }"
+          >
             <div class="question" @click="toggleAnswer(index)">
               <span>{{ faqItem.question }}</span>
-              <button>{{ showAnswer[index] ? "^" : "v" }}</button>
+              <button>{{ showAnswer[index] ? "▲" : "▼" }}</button>
             </div>
-            <div class="answer" v-if="showAnswer[index]">
+            <div class="answer">
               <p>{{ faqItem.answer }}</p>
             </div>
           </div>
@@ -244,7 +249,7 @@ export default {
   justify-content: center;
   align-items: center;
   margin-top: 60px;
-  border: 4px solid #3cb26d;
+
   border-radius: 5px;
   max-width: 80%;
   flex-direction: column;

@@ -7,6 +7,7 @@ import Login from '@/components/Login.vue'
 import SignUp from '@/components/SignUp.vue'
 import LogOut from '@/components/LogOut.vue'
 import addLocator from '@/views/Locator.vue'
+import ResetPassword from '@/components/ResetPassword.vue'
 
 const routes = [
   {
@@ -53,6 +54,12 @@ const routes = [
     path: '/locator',
     name: 'Locator',
     component: addLocator
+  },
+
+  {
+    path: '/reset',
+    name: 'ResetPassword',
+    component: ResetPassword
   },
 
 ]
