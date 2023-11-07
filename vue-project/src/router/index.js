@@ -3,6 +3,7 @@ import Home from '@/views/Home.vue'
 import About from '@/views/About.vue'
 import NotFound from '@/views/NotFound.vue'
 import addReminderView from '@/views/AddReminderView.vue'
+import Login from '@/components/Login.vue'
 
 const routes = [
   {
@@ -25,6 +26,12 @@ const routes = [
     path: '/addReminderView',
     name: 'addReminderView',
     component: addReminderView
+  },
+
+  {
+    path: '/login',
+    name: 'Login',
+    component: Login
   },
 
 ]

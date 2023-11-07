@@ -15,10 +15,11 @@
 </template>
 
 <script>
-import { AuthUI } from "firebaseui";
-import "firebaseui/dist/firebaseui.css";
 import app from "@/uifire.js";
 import router from "@/router/index.js";
+import * as firebase from "firebase/app";
+import "firebaseui/dist/firebaseui.css";
+import * as firebaseui from "firebaseui";
 
 export default {
   name: "Login",
@@ -38,7 +39,7 @@ export default {
         },
       },
     };
-    const ui = new AuthUI(app.auth());
+    const ui = new firebaseui.auth.AuthUI(app.auth());
     ui.start("#firebaseui-auth-container", uiConfig);
   },
 };
