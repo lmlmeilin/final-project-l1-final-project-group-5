@@ -64,13 +64,36 @@
 <script>
 import firebaseApp from '../firebase.js';
 import { getFirestore } from "firebase/firestore"
-import { doc, setDoc } from "firebase/firestore";
+import { doc, setDoc, getDoc } from "firebase/firestore";
+import { getAuth} from "firebase/auth";
+
 const db = getFirestore(firebaseApp);
 
 export default {
+
+  data() {
+    return {
+      med: "", dosage: "", freq: "",  baFood: "", setRem: "", 
+      chooseFreq: "", first: "", second: "", third: "", totalDuration:"", useremail: ""
+    }
+  },
   methods: {
   async savetofs(){   
     console.log("IN AC") 
+    const auth = getAuth(); 
+    this.useremail = auth.currentUser.email;
+    
+    // const docRef = doc(db, String(this.useremail), this.med)
+    // const docMed = await getDoc(docRef)
+  
+    // if (docMed.exists()) {
+    //   alert("Medicine already exists. Please input another medicine.")
+    //   return
+    // }
+    
+
+    // last class-- > firebase 8 --> await db.collection("Portfolio").doc(coin).set(...
+    // We change to firebase 9     
     let med  = document.getElementById("med").value
     let dosage  = document.getElementById("dosage").value
     let freq  = document.getElementById("freq").value
@@ -83,10 +106,8 @@ export default {
     let totalDuration = document.getElementById("totalDuration").value
 
     alert(" Saving your data for Medicine : " + med) 
-    // last class-- > firebase 8 --> await db.collection("Portfolio").doc(coin).set(...
-    // We change to firebase 9     
     try{
-      const docRef = await setDoc(doc(db, "reminder", med),{
+      const docRef = await setDoc(doc(db, String(this.useremail), med),{
       Med: med , Dosage : dosage, Frequency: freq, BaFood : baFood, SetReminder: setRem,
       ChooseFrequency: chooseFreq, First: first, Second: second, Third: third, TotalDuration: totalDuration,
       })
@@ -98,7 +119,7 @@ export default {
         console.error("Error adding document: ", error);
     }
     
-  }
+  },
   } 
 }
 </script>
