@@ -113,15 +113,40 @@ export default {
 </script>
 
 <style scoped>
-#map {
-  height: 300px;
-  width: 100%;
-  margin: auto;
+/* This styles the container of the input and selects */
+#search-and-filter {
+  display: flex;
+  justify-content: space-between; /* This will space out your input and selects */
+  padding: 10px 0; /* Add some vertical padding */
 }
 
-h3 {
-  background-color: #4CAF50; 
-  color: white; 
-  padding: 10px; 
+#searchInput, #medicineFilter, #holidayFilter {
+  flex: 1; 
+  margin: 0 10px; 
 }
+
+
+#clinic-list {
+  overflow-y: auto; 
+  max-height: 300px; 
+}
+
+
+#clinic-list > div {
+  border-bottom: 1px solid #ccc;
+  padding: 10px;
+}
+
+#clinic-list h2 {
+  margin: 0;
+  padding: 0;
+  color: #333; 
+}
+
+#clinic-list p {
+  margin: 0;
+  padding: 0;
+  font-size: 0.9em; 
+}
+
 </style>

@@ -1,5 +1,5 @@
 <template>
-    <h1 id = "Current">Medicines</h1>    
+    <h1 class = "header1">Medicines</h1>    
     
     <table id = "table" class = "auto-index">
         <tr>  
@@ -18,69 +18,70 @@
         </tr>
     </table><br><br>    
 
-    <div v-if="isEditing">
-      <h1>Edit Reminder</h1>
-      <form @submit.prevent="updateMeds" >
+    <div v-if="isEditing" class = "Editing">
+      <h1 class = "header2">Edit Reminder</h1>
+      <form @submit.prevent="updateMeds" class = "myform2">
         <h2 class="h2">
           Edit Reminder
         </h2>
-        <div class="formi">
-        <label for="med">Medicine Name</label> <br/>
-        <input v-model="editData.Med" type="text" id="editMed" />
-        <br/><br/>
+        <div class = "formii">
+          <label for="med">Medicine Name</label> <br/>
+          <input v-model="editData.Med" type="text" id="editMed" />
+          <br/><br/>
 
-        <label for="dosage">Dosage</label> <br />
-        <input v-model="editData.Dosage" type="number" id="editDosage" />
-        <br /><br />
+          <label for="dosage">Dosage</label> <br />
+          <input v-model="editData.Dosage" type="number" id="editDosage" />
+          <br /><br />
 
-        <label for="freq">How many times do you take this medicine per day?</label><br />
-        <input v-model="editData.Freq" type="number" id="editFreq" />
-        <br /><br />
+          <label for="freq">How many times do you take this medicine per day?</label><br />
+          <input v-model="editData.Freq" type="number" id="editFreq" />
+          <br /><br />
 
-        <label for="baFood">Before/After Food (Select Before/After food)</label>
-        <br />
-        <select v-model="editData.BaFood" id="editbaFood">
-          <option value="Before Food">Before Food</option>
-          <option value="Before Food">After Food</option>
-        </select>
-        <br /><br />
+          <label for="baFood">Before/After Food (Select Before/After food)</label>
+          <br />
+          <select v-model="editData.BaFood" id="editbaFood">
+            <option value="Before Food">Before Food</option>
+            <option value="After Food">After Food</option>
+          </select>
+          <br /><br />
 
-        <label for="setRem"
-          >Set reminder notification to ring/silent (Select ring/silent)</label><br />
-        <select v-model="editData.SetRem" id="editSetRem">
-          <option value="Ring">Ring</option>
-          <option value="Silent">Silent</option>
-        </select>
-        <br /><br />
+          <label for="setRem"
+            >Set reminder notification to ring/silent (Select ring/silent)</label><br />
+          <select v-model="editData.SetRem" id="editSetRem" @change="checkSetRem">
+            <option value="Ring">Ring</option>
+            <option value="Silent">Silent</option>
+          </select>
+          <br /><br />
 
-        <label for="chooseFreq">Choose frequency of intake (Select Daily/Weekly/Monthly)</label> <br/>
-        <select v-model="editData.ChooseFreq" id="chooseFreq">
-          <option value="Daily">Daily</option>
-          <option value="Weekly">Weekly</option>
-          <option value="Monthly">Monthly</option>
-        </select>
-        <br /><br />
+          <label for="chooseFreq">Choose frequency of intake (Select Daily/Weekly/Monthly)</label> <br/>
+          <select v-model="editData.ChooseFreq" id="chooseFreq">
+            <option value="Daily">Daily</option>
+            <option value="Weekly">Weekly</option>
+            <option value="Monthly">Monthly</option>
+          </select>
+          <br /><br />
 
-        <label for="first">1st Intake</label> <br />
-        <input v-model="editData.First" type="time" id="editFirst"/>
-        <br /><br />
+          <label for="first">1st Intake</label> <br />
+          <input v-model="editData.First" type="time" id="editFirst"/>
+          <br /><br />
 
-        <label for="second">2nd Intake</label> <br />
-        <input v-model="editData.Second" type="time" id="editSecond"/>
-        <br /><br />
+          <label for="second">2nd Intake</label> <br />
+          <input v-model="editData.Second" type="time" id="editSecond"/>
+          <br /><br />
 
-        <label for="third">3rd Intake</label> <br />
-        <input v-model="editData.Third" type="time" id="editThird"/>
-        <br /><br />
+          <label for="third">3rd Intake</label> <br />
+          <input v-model="editData.Third" type="time" id="editThird"/>
+          <br /><br />
 
-        <label for="totalDuration">Total days required to complete the medication</label><br />
-        <input v-model="editData.TotalDuration" type="number" id="editTotalDuration" />
-        <br /><br />
+          <label for="totalDuration">Total days required to complete the medication</label><br />
+          <input v-model="editData.TotalDuration" type="number" id="editTotalDuration" />
+          <br /><br />
 
-      </div>
-        <button type="submit">Edit</button>
-        <button @click="cancelEdit">Cancel</button>
+        <button type="submit" class = "editBtn">Edit</button> <br/><br/>
+        <button @click="cancelEdit" class = "cancelBtn">Cancel</button>
+        </div>
       </form>
+        
     </div>
 
 </template>
@@ -125,10 +126,10 @@ export default {
       let documentData= docs.data()
       let med  = (documentData.Med)
       let dosage  = (documentData.Dosage)
-      let freq  = (documentData.Frequency)
+      let freq  = (documentData.Freq)
       let baFood =  (documentData.BaFood)
-      let setRem = (documentData.SetReminder)
-      let chooseFreq = (documentData.ChooseFrequency)
+      let setRem = (documentData.SetRem)
+      let chooseFreq = (documentData.ChooseFreq)
       let first = (documentData.First)
       let second = (documentData.Second)
       let third = (documentData.Third)
@@ -190,21 +191,12 @@ export default {
       this.editData.Second = second;
       this.editData.Third = third;
       this.editData.TotalDuration = totalDuration;
+
+      this.clearTable();
     },
     cancelEdit() {
       this.isEditing = false;
-      this.editData = { 
-        Med: "",
-        Dosage: "",
-        Freq: "",
-        BaFood: "",
-        SetRem: "",
-        ChooseFreq: "",
-        First: "",
-        Second: "",
-        Third: "",
-        TotalDuration: "",
-      };
+      this.display(this.useremail);
     }, 
     async updateMeds() {
       const docRef = doc(db, String(this.useremail), this.editData.Med);
@@ -234,18 +226,34 @@ export default {
           Third: "",
           TotalDuration: "",
         }
+        this.display(this.useremail);
+    }, 
+    clearTable() {
+      let table = document.getElementById("table");
+      while (table.rows.length > 1) {
+      table.deleteRow(1);
+    }
     },
+    checkSetRem() {
+    console.log("editData.SetRem:", this.editData.SetRem);
+   },
   }
 }
 </script>
 
 <style>
-h1 {
-  text-align: center;
+.header1 {
+  text-indent: 60px;
+  width: 100%;
+  font-family: Kanit;
+  text-align: left;
+  background-color: #3cb26d;
+  color: white;
+  border-radius: 32px;
 }
 
 table {
-  font-family: arial, sans-serif;
+  font-family: Kanit;
   border-collapse: collapse;
   width: 100%;
 }
@@ -270,4 +278,43 @@ td {
   color: rgb(243, 236, 236);
   background-color: green;
 }
+
+.header2 {
+  text-indent: 60px;
+  width: 100%;
+  font-family: Kanit;
+  text-align: left;
+  background-color: #3cb26d;
+  color: white;
+  border-radius: 32px;
+}
+
+.h2 {
+  font-family: Kanit;
+  text-indent: 65px;
+  text-align: left;
+}
+
+.formii {
+  margin: 0 auto;
+  text-align: left;
+  width: 90%;
+}
+
+.myform2 {
+  font-family: Kanit;
+  background-color: #d9d9d9;
+  border-radius: 32px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+.editBtn {
+  color: rgb(243, 236, 236);
+  background-color: green;
+}
+.cancelBtn {
+  color: rgb(243, 236, 236);
+  background-color: rgba(57, 59, 57, 0.593);
+
+}
+
 </style>

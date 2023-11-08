@@ -1,5 +1,5 @@
 <template>
-  <div style="text-align:center;" v-if="user">
+  <div style="text-align:center;" v-if="user" class ="AddReminderView">
       <NavBar class="nav-bar" />
       <div class="content">
       <AddReminder @added="change"/>
@@ -43,9 +43,15 @@ export default {
 
 <style>
 .nav-bar {
-width: 100%;
-height: 100%;
-/* Add other styling for the NavBar as needed */
+  width: 100%;
+  position: fixed;
+  background-color: #ffffff; 
+}
+.content{
+  margin-left: 100px;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
 }
 
 
