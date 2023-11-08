@@ -43,14 +43,14 @@ export default {
 
 <style>
 .nav-bar {
-width: 100%;
-height: 100%;
-/* Add other styling for the NavBar as needed */
+  width: 100%;
+  position: fixed;
+  background-color: #ffffff; 
 }
-
-.AddReminderView{
+.content{
+  margin-left: 100px;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   align-items: stretch;
 }
 
