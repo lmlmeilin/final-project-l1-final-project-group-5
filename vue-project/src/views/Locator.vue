@@ -1,14 +1,15 @@
 <template>
-  <div>
+  <div class="container">
+<NavBar class="nav-bar" />
+<div class="content">
     <div class="header">
       <h3>Clinic Locator</h3>
     </div>
-    <div class="content">
-      <NavBar class="nav-bar" />
-      <div id="map"></div>
-    </div>
+    <div id="map"></div>
     <AddLocator />
   </div>
+  </div>
+
 </template>
 
 <script>
@@ -107,16 +108,13 @@ export default {
 </script>
 
 <style scoped>
-.header {
-  display: flex; 
-  justify-content: center;
-  align-items: center; 
-  height: 60px; 
+.container {
+    display:flex;
+    align-items: flex-start;
 }
 
 .content {
-  display: flex; 
-  align-items: flex-start; 
+  display: block;
 }
 
 .nav-bar {
