@@ -1,5 +1,5 @@
 <template>
-  <div style="text-align:center;" v-if="user">
+  <div style="text-align:center;" v-if="user" class ="AddReminderView">
       <NavBar class="nav-bar" />
       <div class="content">
       <AddReminder @added="change"/>
@@ -46,6 +46,12 @@ export default {
 width: 100%;
 height: 100%;
 /* Add other styling for the NavBar as needed */
+}
+
+.AddReminderView{
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
 }
 
 
