@@ -96,7 +96,7 @@
 
 <script>
 import { getFirestore } from "firebase/firestore";
-import { doc, setDoc } from "firebase/firestore";
+import { doc, setDoc, getDoc } from "firebase/firestore";
 import { firebaseApp } from "@/firebase"; // Import firebaseApp
 import { getAuth } from "firebase/auth"; // Import getAuth to access auth
 
@@ -124,8 +124,16 @@ export default {
       console.log("IN AC");
       const auth = getAuth(); 
       this.useremail = auth.currentUser.email;
-      
+
       let med = document.getElementById("med").value;
+      // Check if the medicine already exists for the user
+      const medDocRef = doc(db, String(this.useremail), med);
+      const medDoc = await getDoc(medDocRef);
+      if (medDoc.exists()) {
+         alert("Medicine with this name already exists. Please enter another Medicine name.");
+         return;
+      }
+
       let dosage = document.getElementById("dosage").value;
       let freq = document.getElementById("freq").value;
       let baFood = document.getElementById("baFood").value;
@@ -137,8 +145,7 @@ export default {
       let totalDuration = document.getElementById("totalDuration").value;
 
       alert(" Saving your data for Medicine : " + med);
-      // last class-- > firebase 8 --> await db.collection("Portfolio").doc(coin).set(...
-      // We change to firebase 9
+    
       try {
         const docRef = await setDoc(doc(db, String(this.useremail), med), {
           Med: med,
