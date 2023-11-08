@@ -3,7 +3,7 @@
     <form id="myform">
       <br />
       <h2 class="h2">
-        Add New Reminder, Reminder #<span id="reminder-number">1</span>
+        Add New Reminder
       </h2>
 
       <div class="formi">
