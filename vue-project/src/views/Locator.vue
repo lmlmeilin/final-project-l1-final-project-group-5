@@ -1,14 +1,12 @@
 <template>
 <div class="locator-page">
-  <div class="container">
-<NavBar class="nav-bar" />
-<div class="content">
-    <div class="header">
-      <h3>Clinic Locator</h3>
-    </div>
+    <NavBar />
+    <div class="content">
+        <div class="header">
+            <h3>Clinic Locator</h3>
+        </div>
     <div id="map"></div>
     <AddLocator />
-  </div>
   </div>
 </div>
 </template>
@@ -109,14 +107,29 @@ export default {
 </script>
 
 <style scoped>
-.container{
+.locator-page{
     flex:1;
     display: flex;
     flex-direction: row;
-    align-items: center;
+    align-items: stretch;
     min-height: 100vh;
     overflow: hidden;
-    width:100%;
+}
+
+.header{
+    font-size: 25px;
+    background-color: #3cb26d;
+    border-radius: 10px;
+    text-align: center;
+    color: #fff;
+    margin: 0;
+    width: 1200px;
+    height:60px;
+    margin-bottom: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 
 .content {
@@ -129,14 +142,9 @@ export default {
   padding: 35px;
 }
 
-.nav-bar {
-  width: 90px;
-  height: 100%; 
-}
-
 #map {
-  height: 350px; 
-  width: 350px;
+  height: 400px; 
+  width: 400px;
   margin-bottom: 20px;
 }
 
