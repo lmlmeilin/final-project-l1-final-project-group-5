@@ -18,18 +18,96 @@
         </tr>
     </table><br><br>    
 
+    <div v-if="isEditing">
+      <h1>Edit Reminder</h1>
+      <form @submit.prevent="updateMeds" >
+        <h2 class="h2">
+          Edit Reminder
+        </h2>
+        <div class="formi">
+        <label for="med">Medicine Name</label> <br/>
+        <input v-model="editData.Med" type="text" id="editMed" />
+        <br/><br/>
+
+        <label for="dosage">Dosage</label> <br />
+        <input v-model="editData.Dosage" type="number" id="editDosage" />
+        <br /><br />
+
+        <label for="freq">How many times do you take this medicine per day?</label><br />
+        <input v-model="editData.Freq" type="number" id="editFreq" />
+        <br /><br />
+
+        <label for="baFood">Before/After Food (Select Before/After food)</label>
+        <br />
+        <select v-model="editData.BaFood" id="editbaFood">
+          <option value="Before Food">Before Food</option>
+          <option value="Before Food">After Food</option>
+        </select>
+        <br /><br />
+
+        <label for="setRem"
+          >Set reminder notification to ring/silent (Select ring/silent)</label><br />
+        <select v-model="editData.SetRem" id="editSetRem">
+          <option value="Ring">Ring</option>
+          <option value="Silent">Silent</option>
+        </select>
+        <br /><br />
+
+        <label for="chooseFreq">Choose frequency of intake (Select Daily/Weekly/Monthly)</label> <br/>
+        <select v-model="editData.ChooseFreq" id="chooseFreq">
+          <option value="Daily">Daily</option>
+          <option value="Weekly">Weekly</option>
+          <option value="Monthly">Monthly</option>
+        </select>
+        <br /><br />
+
+        <label for="first">1st Intake</label> <br />
+        <input v-model="editData.First" type="time" id="editFirst"/>
+        <br /><br />
+
+        <label for="second">2nd Intake</label> <br />
+        <input v-model="editData.Second" type="time" id="editSecond"/>
+        <br /><br />
+
+        <label for="third">3rd Intake</label> <br />
+        <input v-model="editData.Third" type="time" id="editThird"/>
+        <br /><br />
+
+        <label for="totalDuration">Total days required to complete the medication</label><br />
+        <input v-model="editData.TotalDuration" type="number" id="editTotalDuration" />
+        <br /><br />
+
+      </div>
+        <button type="submit">Edit</button>
+        <button @click="cancelEdit">Cancel</button>
+      </form>
+    </div>
+
 </template>
 
 <script>
 import { firebaseApp } from "../firebase.js";
 import { getFirestore } from "firebase/firestore";
-import { collection, getDocs, doc, deleteDoc } from "firebase/firestore";
+import { collection, getDocs, doc, deleteDoc, updateDoc } from "firebase/firestore";
 import { getAuth} from "firebase/auth";
 
 const db = getFirestore(firebaseApp);
 export default {
   data() {
     return {
+      isEditing: false,
+      editData: { 
+        Med: "",
+        Dosage: "",
+        Freq: "",
+        BaFood: "",
+        SetRem: "",
+        ChooseFreq: "",
+        First: "",
+        Second: "",
+        Third: "",
+        TotalDuration: "",
+      },
       useremail: "",
     }
   }, 
@@ -65,15 +143,27 @@ export default {
       cell1.innerHTML = index; cell2.innerHTML = med; cell3.innerHTML = dosage; cell4.innerHTML = freq; 
       cell5.innerHTML = baFood; cell6.innerHTML = setRem;  cell7.innerHTML = chooseFreq; cell8.innerHTML = first; 
       cell9.innerHTML = second; cell10.innerHTML = third; cell11.innerHTML = totalDuration; 
+
+      // create delete button
       let deleteButton = document.createElement("button")
       deleteButton.id = String(med)
       deleteButton.className = "bwt"    
       deleteButton.innerHTML ="Delete"
-      // append delete button in cell8
       cell12.appendChild(deleteButton) 
       deleteButton.onclick =  () => {
         this.deleteInstrument(med, useremail)
       }  
+
+      // create edit button
+      let editButton = document.createElement("button")
+      editButton.id = String(med)
+      editButton.className = "edit"    
+      editButton.innerHTML ="Edit"
+      cell12.appendChild(editButton) 
+      editButton.onclick =  () => {
+        this.editInstrument(med, dosage, freq, baFood, setRem, chooseFreq, first, second, third, totalDuration)
+      }  
+
       index += 1
       })
     },
@@ -86,6 +176,64 @@ export default {
           tb.deleteRow(1)
       }
       this.display(this.useremail)
+    },
+
+    async editInstrument(med, dosage, freq, baFood, setRem, chooseFreq, first, second, third, totalDuration) {
+      this.isEditing = true;
+      this.editData.Med = med;
+      this.editData.Dosage = dosage;
+      this.editData.Freq = freq;
+      this.editData.BaFood = baFood;
+      this.editData.SetRem = setRem;
+      this.editData.ChooseFreq = chooseFreq;
+      this.editData.First = first;
+      this.editData.Second = second;
+      this.editData.Third = third;
+      this.editData.TotalDuration = totalDuration;
+    },
+    cancelEdit() {
+      this.isEditing = false;
+      this.editData = { 
+        Med: "",
+        Dosage: "",
+        Freq: "",
+        BaFood: "",
+        SetRem: "",
+        ChooseFreq: "",
+        First: "",
+        Second: "",
+        Third: "",
+        TotalDuration: "",
+      };
+    }, 
+    async updateMeds() {
+      const docRef = doc(db, String(this.useremail), this.editData.Med);
+      const newData = {
+        Med: editData.Med,
+        Dosage: editData.Dosage,
+        Freq: editData.Freq,
+        BaFood: editData.BaFood,
+        SetRem: editData.SetRem,
+        ChooseFreq: editData.ChooseFreq,
+        First: editData.First,
+        Second: editData.Second,
+        Third: editData.Third,
+        TotalDuration: ditData.TotalDuration,
+        }
+        await updateDoc(docRef, newData)
+        this.isEditing = false;
+        this.editData = {
+          Med: "",
+          Dosage: "",
+          Freq: "",
+          BaFood: "",
+          SetRem: "",
+          ChooseFreq: "",
+          First: "",
+          Second: "",
+          Third: "",
+          TotalDuration: "",
+        }
     },
   }
 }
