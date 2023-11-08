@@ -71,8 +71,8 @@ export default {
       deleteButton.innerHTML ="Delete"
       // append delete button in cell8
       cell12.appendChild(deleteButton) 
-      deleteButton.onclick =  function(){
-        deleteInstrument(med, useremail)
+      deleteButton.onclick =  () => {
+        this.deleteInstrument(med, useremail)
       }  
       index += 1
       })
