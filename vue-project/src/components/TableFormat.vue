@@ -41,13 +41,13 @@
         <br />
         <select v-model="editData.BaFood" id="editbaFood">
           <option value="Before Food">Before Food</option>
-          <option value="Before Food">After Food</option>
+          <option value="After Food">After Food</option>
         </select>
         <br /><br />
 
         <label for="setRem"
           >Set reminder notification to ring/silent (Select ring/silent)</label><br />
-        <select v-model="editData.SetRem" id="editSetRem">
+        <select v-model="editData.SetRem" id="editSetRem" @change="checkSetRem">
           <option value="Ring">Ring</option>
           <option value="Silent">Silent</option>
         </select>
@@ -125,10 +125,10 @@ export default {
       let documentData= docs.data()
       let med  = (documentData.Med)
       let dosage  = (documentData.Dosage)
-      let freq  = (documentData.Frequency)
+      let freq  = (documentData.Freq)
       let baFood =  (documentData.BaFood)
-      let setRem = (documentData.SetReminder)
-      let chooseFreq = (documentData.ChooseFrequency)
+      let setRem = (documentData.SetRem)
+      let chooseFreq = (documentData.ChooseFreq)
       let first = (documentData.First)
       let second = (documentData.Second)
       let third = (documentData.Third)
@@ -190,21 +190,12 @@ export default {
       this.editData.Second = second;
       this.editData.Third = third;
       this.editData.TotalDuration = totalDuration;
+
+      this.clearTable();
     },
     cancelEdit() {
       this.isEditing = false;
-      this.editData = { 
-        Med: "",
-        Dosage: "",
-        Freq: "",
-        BaFood: "",
-        SetRem: "",
-        ChooseFreq: "",
-        First: "",
-        Second: "",
-        Third: "",
-        TotalDuration: "",
-      };
+      this.display(this.useremail);
     }, 
     async updateMeds() {
       const docRef = doc(db, String(this.useremail), this.editData.Med);
@@ -234,7 +225,17 @@ export default {
           Third: "",
           TotalDuration: "",
         }
+        this.display(this.useremail);
+    }, 
+    clearTable() {
+      let table = document.getElementById("table");
+      while (table.rows.length > 1) {
+      table.deleteRow(1);
+    }
     },
+    checkSetRem() {
+    console.log("editData.SetRem:", this.editData.SetRem);
+   },
   }
 }
 </script>

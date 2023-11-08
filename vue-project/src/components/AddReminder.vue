@@ -39,7 +39,7 @@
         <br />
         <select id="baFood" name="Select before/after food">
           <option value="Before Food">Before Food</option>
-          <option value="Before Food">After Food</option>
+          <option value="After Food">After Food</option>
         </select>
         <br /><br />
 
@@ -150,10 +150,10 @@ export default {
         const docRef = await setDoc(doc(db, String(this.useremail), med), {
           Med: med,
           Dosage: dosage,
-          Frequency: freq,
+          Freq: freq,
           BaFood: baFood,
-          SetReminder: setRem,
-          ChooseFrequency: chooseFreq,
+          SetRem: setRem,
+          ChooseFreq: chooseFreq,
           First: first,
           Second: second,
           Third: third,
