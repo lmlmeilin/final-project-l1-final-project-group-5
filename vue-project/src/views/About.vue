@@ -1,6 +1,6 @@
 <template>
   <div class="about-page">
-    <NavBar />
+    <NavBar class="navbar" />
     <div class="content">
       <div class="background">
         <h3>About Us</h3>
@@ -132,6 +132,10 @@ export default {
   align-items: stretch;
   min-height: 100vh;
   overflow: hidden;
+}
+
+.navbar {
+  position: fixed;
 }
 
 .w-w-d {
