@@ -95,52 +95,69 @@
 </template>
 
 <script>
-import firebaseApp from '../firebase.js';
-import { getFirestore } from "firebase/firestore"
+import { getFirestore } from "firebase/firestore";
 import { doc, setDoc } from "firebase/firestore";
+import { firebaseApp } from "@/firebase"; // Import firebaseApp
+import { getAuth } from "firebase/auth"; // Import getAuth to access auth
+
 const db = getFirestore(firebaseApp);
+const auth = getAuth(firebaseApp); // Get the auth object
 
 export default {
-
   data() {
     return {
-      med: "", dosage: "", freq: "",  baFood: "", setRem: "", 
-      chooseFreq: "", first: "", second: "", third: "", totalDuration:"", useremail: ""
-    }
+      med: "",
+      dosage: "",
+      freq: "",
+      baFood: "",
+      setRem: "",
+      chooseFreq: "",
+      first: "",
+      second: "",
+      third: "",
+      totalDuration: "",
+      useremail: "",
+    };
   },
   methods: {
-  async savetofs(){   
-    console.log("IN AC") 
-    let med  = document.getElementById("med").value
-    let dosage  = document.getElementById("dosage").value
-    let freq  = document.getElementById("freq").value
-    let baFood =  document.getElementById("baFood").value
-    let setRem = document.getElementById("setRem").value
-    let chooseFreq = document.getElementById("chooseFreq").value
-    let first = document.getElementById("first").value
-    let second = document.getElementById("second").value
-    let third = document.getElementById("third").value
-    let totalDuration = document.getElementById("totalDuration").value
+    async savetofs() {
+      console.log("IN AC");
+      let med = document.getElementById("med").value;
+      let dosage = document.getElementById("dosage").value;
+      let freq = document.getElementById("freq").value;
+      let baFood = document.getElementById("baFood").value;
+      let setRem = document.getElementById("setRem").value;
+      let chooseFreq = document.getElementById("chooseFreq").value;
+      let first = document.getElementById("first").value;
+      let second = document.getElementById("second").value;
+      let third = document.getElementById("third").value;
+      let totalDuration = document.getElementById("totalDuration").value;
 
-    alert(" Saving your data for Medicine : " + med) 
-    // last class-- > firebase 8 --> await db.collection("Portfolio").doc(coin).set(...
-    // We change to firebase 9     
-    try{
-      const docRef = await setDoc(doc(db, "reminder", med),{
-      Med: med , Dosage : dosage, Frequency: freq, BaFood : baFood, SetReminder: setRem,
-      ChooseFrequency: chooseFreq, First: first, Second: second, Third: third, TotalDuration: totalDuration,
-      })
-      console.log(docRef)
-      document.getElementById('myform').reset();
-      this.$emit("added")
-      }
-    catch(error) {
+      alert(" Saving your data for Medicine : " + med);
+      // last class-- > firebase 8 --> await db.collection("Portfolio").doc(coin).set(...
+      // We change to firebase 9
+      try {
+        const docRef = await setDoc(doc(db, "reminder", med), {
+          Med: med,
+          Dosage: dosage,
+          Frequency: freq,
+          BaFood: baFood,
+          SetReminder: setRem,
+          ChooseFrequency: chooseFreq,
+          First: first,
+          Second: second,
+          Third: third,
+          TotalDuration: totalDuration,
+        });
+        console.log(docRef);
+        document.getElementById("myform").reset();
+        this.$emit("added");
+      } catch (error) {
         console.error("Error adding document: ", error);
-    }
-    
-  }
-  } 
-}
+      }
+    },
+  },
+};
 </script>
 
 <style scoped>
