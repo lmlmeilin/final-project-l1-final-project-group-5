@@ -175,7 +175,7 @@ export default {
   padding: 50px;
   border-radius: 10px;
   text-align: center;
-  max-width: 100%; /* Adjust the maximum width to your preference */
+  max-width: 100%; 
 }
 
 .user-email {

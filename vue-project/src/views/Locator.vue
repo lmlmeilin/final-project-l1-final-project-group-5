@@ -1,4 +1,5 @@
 <template>
+<div class="locator-page">
   <div class="container">
 <NavBar class="nav-bar" />
 <div class="content">
@@ -9,7 +10,7 @@
     <AddLocator />
   </div>
   </div>
-
+</div>
 </template>
 
 <script>
@@ -108,24 +109,37 @@ export default {
 </script>
 
 <style scoped>
-.container {
-    display:flex;
-    align-items: flex-start;
+.container{
+    flex:1;
+    display: flex;
+    flex-direction: row;
+    align-items: stretch;
+    min-height: 100vh;
+    overflow: hidden;
+    width:100%;
 }
 
 .content {
-  display: block;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 35px;
+
 }
 
 .nav-bar {
   width: 90px;
   height: 100%; 
-  margin-right: 420px;
+  margin-right: 100px;
 }
 
 #map {
   height: 400px; 
   width: 400px;
+  margin-bottom: 20px;
 }
 
 </style>
