@@ -2,8 +2,8 @@
     <div class = "container">
         <NavBar class="nav-bar" />
         <div class="content">
-        <AddReminder @added="change" class="add-reminder"/>
-        <TableFormat :key="refreshComp" class ="table-format"/>  
+        <AddReminder @added="change"/>
+        <TableFormat :key="refreshComp"/>  
         </div>
     </div>
   </template>
@@ -22,15 +22,15 @@
     },
     data(){
       return{
-        refreshComp:0
+        refreshComp: 0
       }
-     },
+    },
     methods:{
       change(){  
         this.refreshComp += 1
-        }
-       }  
       }
+    },  
+  }
   </script>
   
   <style>

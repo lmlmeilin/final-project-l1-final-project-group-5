@@ -8,7 +8,7 @@
           <br>
           <form id="myform">
               <br>
-              <h2 class = "h2">Add New Reminder, Reminder #<span id="reminder-number">1</span></h2>
+              <h2 class = "h2">Add New Reminder</h2>
     
               <div class = "formi" >            
                   <label for="med">Medicine Name</label> <br> 
@@ -71,7 +71,6 @@ export default {
   methods: {
   async savetofs(){   
     console.log("IN AC") 
-    let reminderId = 1
     let med  = document.getElementById("med").value
     let dosage  = document.getElementById("dosage").value
     let freq  = document.getElementById("freq").value
@@ -88,7 +87,6 @@ export default {
     // We change to firebase 9     
     try{
       const docRef = await setDoc(doc(db, "reminder", med),{
-      ReminderId: reminderId,
       Med: med , Dosage : dosage, Frequency: freq, BaFood : baFood, SetReminder: setRem,
       ChooseFrequency: chooseFreq, First: first, Second: second, Third: third, TotalDuration: totalDuration,
       })
@@ -99,8 +97,7 @@ export default {
     catch(error) {
         console.error("Error adding document: ", error);
     }
-    reminderId += 1;
-    document.getElementById("reminder-number").textContent = reminderId;
+    
   }
   } 
 }

@@ -31,13 +31,14 @@ export default {
   mounted(){
   async function display(){
   let allDocuments = await getDocs(collection(db,"reminder"))    
+  let index = 1
     // let z = await db.collection("Portfolio").get()
 
   allDocuments.forEach((docs) => {
 
     let documentData= docs.data()
 
-    let reminderId = (documentData.ReminderId)
+    let reminderId = index
     let med  = (documentData.Med)
     let dosage  = (documentData.Dosage)
     let freq  = (documentData.Frequency)
@@ -51,14 +52,14 @@ export default {
 
     // create rows and cells in the table
     let table = document.getElementById("table")
-    let row = table.insertRow(-reminderId)    
+    let row = table.insertRow(index)    
 
     let cell1 = row.insertCell(0); let cell2 = row.insertCell(1); let cell3 = row.insertCell(2);
     let cell4 = row.insertCell(3); let cell5 = row.insertCell(4); let cell6 = row.insertCell(5);
     let cell7 = row.insertCell(6); let cell8 = row.insertCell(7); let cell9 = row.insertCell(8); 
     let cell10 = row.insertCell(9); let cell11 = row.insertCell(10); let cell12 = row.insertCell(11)
 
-    cell1.innerHTML = reminderId; cell2.innerHTML = med; cell3.innerHTML = dosage; cell4.innerHTML = freq; 
+    cell1.innerHTML = index; cell2.innerHTML = med; cell3.innerHTML = dosage; cell4.innerHTML = freq; 
     cell5.innerHTML = baFood; cell6.innerHTML = setRem;  cell7.innerHTML = chooseFreq; cell8.innerHTML = first; 
     cell9.innerHTML = second; cell10.innerHTML = third; cell11.innerHTML = totalDuration; 
 
@@ -80,6 +81,7 @@ export default {
       deleteInstrument(med)
     }  
     cell12.appendChild(editButton) 
+    index += 1
     })
   }
   display()
