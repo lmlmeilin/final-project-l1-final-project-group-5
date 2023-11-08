@@ -39,7 +39,7 @@
         <br />
         <select id="baFood" name="Select before/after food">
           <option value="Before Food">Before Food</option>
-          <option value="Before Food">After Food</option>
+          <option value="After Food">After Food</option>
         </select>
         <br /><br />
 

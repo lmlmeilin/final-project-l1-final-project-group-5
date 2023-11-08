@@ -41,7 +41,7 @@
         <br />
         <select v-model="editData.BaFood" id="editbaFood">
           <option value="Before Food">Before Food</option>
-          <option value="Before Food">After Food</option>
+          <option value="After Food">After Food</option>
         </select>
         <br /><br />
 
@@ -190,21 +190,11 @@ export default {
       this.editData.Second = second;
       this.editData.Third = third;
       this.editData.TotalDuration = totalDuration;
+
+      this.clearTable();
     },
     cancelEdit() {
       this.isEditing = false;
-      this.editData = { 
-        Med: "",
-        Dosage: "",
-        Freq: "",
-        BaFood: "",
-        SetRem: "",
-        ChooseFreq: "",
-        First: "",
-        Second: "",
-        Third: "",
-        TotalDuration: "",
-      };
     }, 
     async updateMeds() {
       const docRef = doc(db, String(this.useremail), this.editData.Med);
@@ -234,6 +224,13 @@ export default {
           Third: "",
           TotalDuration: "",
         }
+        this.display(this.useremail);
+    }, 
+    clearTable() {
+      let table = document.getElementById("table");
+      while (table.rows.length > 1) {
+      table.deleteRow(1);
+    }
     },
   }
 }
