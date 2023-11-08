@@ -1,10 +1,5 @@
 <template>
   <div class="addRem">
-    <div class="container">
-      <h1 class="header">Create New Reminder</h1>
-    </div>
-
-    <br />
     <form id="myform">
       <br />
       <h2 class="h2">
@@ -151,20 +146,6 @@ export default {
 </script>
 
 <style scoped>
-.container {
-  margin-top: 650px;
-  border-radius: 32px;
-  background-color: #3cb26d;
-  height: 100px;
-  width: flex;
-}
-
-.header {
-  color: white;
-  font-family: Kanit;
-  text-align: center;
-}
-
 .h2 {
   font-family: Kanit;
   text-indent: 65px;
