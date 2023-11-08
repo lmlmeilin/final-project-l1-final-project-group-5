@@ -209,16 +209,16 @@ export default {
     async updateMeds() {
       const docRef = doc(db, String(this.useremail), this.editData.Med);
       const newData = {
-        Med: editData.Med,
-        Dosage: editData.Dosage,
-        Freq: editData.Freq,
-        BaFood: editData.BaFood,
-        SetRem: editData.SetRem,
-        ChooseFreq: editData.ChooseFreq,
-        First: editData.First,
-        Second: editData.Second,
-        Third: editData.Third,
-        TotalDuration: ditData.TotalDuration,
+        Med: this.editData.Med,
+        Dosage: this.editData.Dosage,
+        Freq: this.editData.Freq,
+        BaFood: this.editData.BaFood,
+        SetRem: this.editData.SetRem,
+        ChooseFreq: this.editData.ChooseFreq,
+        First: this.editData.First,
+        Second: this.editData.Second,
+        Third: this.editData.Third,
+        TotalDuration: this.editData.TotalDuration,
         }
         await updateDoc(docRef, newData)
         this.isEditing = false;
