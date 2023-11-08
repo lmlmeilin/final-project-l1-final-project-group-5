@@ -4,11 +4,13 @@
       <input id="searchInput" v-model="searchQuery" placeholder="Search clinics" @input="updateClinicList" />
       <select id="medicineFilter" v-model="selectedMedicine" @change="updateClinicList">
         <option value="">All Medicines</option>
-        <option value="Medicine A">Medicine A</option>
-        <option value="Medicine B">Medicine B</option>
-        <option value="Medicine C">Medicine C</option>
-        <!-- Add more filter options as needed -->
+        <option value="Diureticsd">Diureticsd</option>
+        <option value="Vasodilators">Vasodilators</option>
+        <option value="Sulphonylureas">Sulphonylureas</option>
+        <option value="Digoxin">Digoxin</option>
+        <option value="Trimetazidine">Trimetazidine</option>
       </select>
+
       <select id="holidayFilter" v-model="selectedHolidayFilter" @change="updateClinicList">
         <option value="">All Clinics</option>
         <option value="Open on Holidays">Open on Holidays</option>
@@ -40,46 +42,59 @@ export default {
       selectedHolidayFilter: '',
       clinics: [
   {
-    name: "Greenview Medical Center",
-    location: "123 Greenway Drive",
-    medicine: ["Medicine A", "Medicine B"],
-    openOnHolidays: true,
-    openOnSunday: true,
-    openAllday: false
-  },
-  {
-    name: "City Health Clinic",
-    location: "456 Urban Street",
-    medicine: ["Medicine A", "Medicine C"],
+    name: "University Health Centre",
+    location: "20 lower Kent Ridge Rd",
+    medicine: ["Diureticsd", "Digoxin"],
     openOnHolidays: false,
     openOnSunday: false,
-    openAllday: true
+    openAllday: false,
   },
+
   {
-    name: "Lakeside Family Clinic",
-    location: "789 Lakeshore Blvd",
-    medicine: ["Medicine B", "Medicine C"],
+    name: "Orchard Clinic (Orchard)",
+    location: "302 Orchard Rd",
+    medicine: ["Diureticsd", "Vasodilators", "Trimetazidine"],
+    openOnHolidays: true,
+    openOnSunday: false,
+    openAllday: false,
+  },
+
+  {
+    name: "Central 24-Hr Clinic (Clementi)",
+    location: "450 Clementi Ave 3",
+    medicine: ["Diureticsd", "Vasodilators"],
     openOnHolidays: true,
     openOnSunday: true,
-    openAllday: false
+    openAllday: true,
   },
+
   {
-    name: "Central Pediatric Clinic",
-    location: "321 Central Ave",
-    medicine: ["Medicine A", "Medicine B", "Medicine C"],
+    name: "Orchard Clinic (Parkway Parade)",
+    location: "80 Marine Parade Road",
+    medicine: ["Digoxin", "Sulphonylureas"],
+    openOnHolidays: true,
+    openOnSunday: true,
+    openAllday: false,
+  },
+
+  {
+    name: "Pandan Clinic",
+    location: "415 Pandan Gardens",
+    medicine: ["Diureticsd"],
     openOnHolidays: false,
-    openOnSunday: true,
-    openAllday: false
+    openOnSunday: false,
+    openAllday: false,
   },
+
   {
-    name: "24/7 Immediate Care",
-    location: "654 Main Street",
-    medicine: ["Medicine C"],
-    openOnHolidays: true,
-    openOnSunday: true,
-    openAllday: true
+    name: "OneCare Clinic Bedok MRT",
+    location: "315 New Upper Changi Rd",
+    medicine: ["Diureticsd", "Digoxin"],
+    openOnHolidays: false,
+    openOnSunday: false,
+    openAllday: false,
   },
-  // ... add more clinics as needed ...
+
 ],
 
       filteredClinics: [],
@@ -104,20 +119,15 @@ export default {
   },
   mounted() {
     this.updateClinicList();
-
-    // Initialization code for the map should go here.
-    // You may need to convert your vanilla JS map initialization code
-    // to Vue's approach, possibly using Vue's lifecycle hooks.
   },
 }
 </script>
 
 <style scoped>
-/* This styles the container of the input and selects */
 #search-and-filter {
   display: flex;
-  justify-content: space-between; /* This will space out your input and selects */
-  padding: 10px 0; /* Add some vertical padding */
+  justify-content: space-between; 
+  padding: 10px 0;
 }
 
 #searchInput, #medicineFilter, #holidayFilter {

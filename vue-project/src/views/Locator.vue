@@ -14,6 +14,7 @@
 <script>
 import NavBar from "@/components/NavBar.vue";
 import AddLocator from "@/components/AddLocator.vue";
+import myMarkerImage from "@/assets/UserLoc.png";
 
 (g => {
         var h, a, k, p = "The Google Maps JavaScript API",
@@ -44,12 +45,12 @@ export default {
   name: 'Locator',
   components: {
     NavBar,
-    AddLocator
+    AddLocator,
+    myMarkerImage,
   },
   data() {
     return {
       properties: [
-        // ... (your properties array)
       ]
     };
   },
@@ -65,26 +66,86 @@ export default {
 
         const center = new LatLng(1.3521, 103.8198);
         const map = new Map(document.getElementById("map"), {
-          zoom: 11,
+          zoom: 12,
           center,
           mapId: "ClinicMap", 
         });
 
         const properties = [
           {
-            name: "Clinic A",
-            position: new LatLng(1.3521, 103.8198),
-            operationHours: "Mon - Fri: 9 AM to 5 PM",
+            name: "University Health Centre",
+            position: new LatLng(1.2993, 103.7730),
+            operationHours: "Mon - Fri: 8:30AM to 5PM",
           },
+
           {
-            name: "Clinic B",
-            position: new LatLng(1.3615, 103.7637),
-            operationHours: "Mon - Sat: 8 AM to 6 PM",
+            name: "Orchard Clinic (Orchard)",
+            position: new LatLng(1.3042, 103.8348),
+            operationHours: "Mon, Tue, Thurs, Fri: 9AM to 5PM, Wed: 9AM to 1PM",
           },
-          // Add more properties as needed
+
+          {
+            name: "Central 24-Hr Clinic (clementi)",
+            position: new LatLng(1.3137, 103.7654),
+            operationHours: "Open 24 Hours",
+          },
+
+         {
+            name: "Orchard Clinic (Parkway Parade)",
+            position: new LatLng(1.3014, 103.9053),
+            operationHours: "Mon - Sun: 9AM to 6PM",
+          },
+
+          {
+            name: "Pandan Clinic",
+            position: new LatLng(1.3207, 103.7484),
+            operationHours: "Mon - Fri: 8:30AM to 4:30PM, Sat: 8:30AM to 12:30PM",
+          },
+
+          {
+            name: "OneCare Clinic Bedok MRT",
+            position: new LatLng(1.3238, 103.9301),
+            operationHours: "Mon - Fri: 8AM to 9PM, Sat: 8AM to 12PM",
+          },
+
+
+
+
         ];
 
         const infoWindow = new google.maps.InfoWindow();
+
+    const locationButton = document.createElement("button");
+
+    locationButton.textContent = "My Location";
+    locationButton.classList.add("custom-map-control-button");
+    map.controls[google.maps.ControlPosition.RIGHT_CENTER].push(locationButton);
+    locationButton.addEventListener("click", () => {
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(
+      (position) => {
+        const pos = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+
+        const locationMarker = new google.maps.Marker({
+          position: pos,
+          map: map,
+          title: "Your Location",
+          icon:{
+            url:myMarkerImage,
+          }
+        });
+
+        map.setCenter(pos);
+      },
+      () => {
+        handleLocationError(true, infoWindow, map.getCenter());
+      },
+    );
+  } else {
+    handleLocationError(false, infoWindow, map.getCenter());
+  }
+});
+
 
         for (const property of properties) {
           const marker = new AdvancedMarkerElement({
@@ -147,5 +208,15 @@ export default {
   width: 400px;
   margin-bottom: 20px;
 }
+</style>
 
+<style>
+.custom-map-control-button {
+  background-color: white;   
+  color: black;      
+  margin: 10px;         
+  border-radius: 5px;       
+  font-size: 16px;   
+  font-weight: bold;      
+}
 </style>
