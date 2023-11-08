@@ -9,6 +9,7 @@ import LogOut from '@/components/LogOut.vue'
 import addLocator from '@/views/Locator.vue'
 import ResetPassword from '@/components/ResetPassword.vue'
 import Profile from '@/views/Profile.vue'
+import Dashboard from '@/views/Dashboard.vue'
 
 const routes = [
   {
@@ -67,6 +68,12 @@ const routes = [
     path: '/profile',
     name: 'Profile',
     component: Profile
+  },
+
+  {
+    path: '/dashboard',
+    name: 'Dashboard',
+    component: Dashboard
   },
 
 ]
