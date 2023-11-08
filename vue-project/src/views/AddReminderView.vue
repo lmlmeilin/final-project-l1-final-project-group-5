@@ -1,5 +1,5 @@
 <template>
-    <div class = "container">
+    <div style="text-align:center;" v-if="user">
         <NavBar class="nav-bar" />
         <div class="content">
         <AddReminder @added="change"/>
@@ -12,8 +12,15 @@
   import NavBar from '@/components/NavBar.vue'
   import AddReminder from '@/components/AddReminder.vue'
   import  TableFormat from '@/components/TableFormat.vue'
+  import { getAuth, onAuthStateChanged } from "firebase/auth";
   
   export default {
+    mounted() {
+    const auth = getAuth();
+      onAuthStateChanged(auth, user => {
+      this.user = user;
+      })
+    },
     name: 'addReminderView',
     components:{
         NavBar, 
@@ -22,7 +29,8 @@
     },
     data(){
       return{
-        refreshComp: 0
+        refreshComp: 0,
+        user: false,
       }
     },
     methods:{

@@ -122,6 +122,9 @@ export default {
   methods: {
     async savetofs() {
       console.log("IN AC");
+      const auth = getAuth(); 
+      this.useremail = auth.currentUser.email;
+      
       let med = document.getElementById("med").value;
       let dosage = document.getElementById("dosage").value;
       let freq = document.getElementById("freq").value;
@@ -137,7 +140,7 @@ export default {
       // last class-- > firebase 8 --> await db.collection("Portfolio").doc(coin).set(...
       // We change to firebase 9
       try {
-        const docRef = await setDoc(doc(db, "reminder", med), {
+        const docRef = await setDoc(doc(db, String(this.useremail), med), {
           Med: med,
           Dosage: dosage,
           Frequency: freq,
