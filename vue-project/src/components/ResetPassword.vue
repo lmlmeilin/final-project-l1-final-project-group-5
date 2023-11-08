@@ -73,6 +73,9 @@ export default {
   color: #3cb26d;
 }
 
+.reset-password-input {
+  width: 100%;
+}
 .reset-password-input label {
   display: block;
   margin-bottom: 5px;
