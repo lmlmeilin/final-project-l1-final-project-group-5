@@ -1,6 +1,5 @@
 <template>
   <div>
-    <h3>Clinic Locator</h3>
     <div>
       <input id="searchInput" v-model="searchQuery" placeholder="Search clinics" @input="updateClinicList" />
       <select id="medicineFilter" v-model="selectedMedicine" @change="updateClinicList">
@@ -28,7 +27,6 @@
         <p>Open 24 Hours: {{ clinic.openAllday ? 'Yes' : 'No' }}</p>
       </div>
     </div>
-    <div id="map" style="height: 400px; width: 100%;"></div>
   </div>
 </template>
 
@@ -41,8 +39,49 @@ export default {
       selectedMedicine: '',
       selectedHolidayFilter: '',
       clinics: [
-        // ... your clinics data ...
-      ],
+  {
+    name: "Greenview Medical Center",
+    location: "123 Greenway Drive",
+    medicine: ["Medicine A", "Medicine B"],
+    openOnHolidays: true,
+    openOnSunday: true,
+    openAllday: false
+  },
+  {
+    name: "City Health Clinic",
+    location: "456 Urban Street",
+    medicine: ["Medicine A", "Medicine C"],
+    openOnHolidays: false,
+    openOnSunday: false,
+    openAllday: true
+  },
+  {
+    name: "Lakeside Family Clinic",
+    location: "789 Lakeshore Blvd",
+    medicine: ["Medicine B", "Medicine C"],
+    openOnHolidays: true,
+    openOnSunday: true,
+    openAllday: false
+  },
+  {
+    name: "Central Pediatric Clinic",
+    location: "321 Central Ave",
+    medicine: ["Medicine A", "Medicine B", "Medicine C"],
+    openOnHolidays: false,
+    openOnSunday: true,
+    openAllday: false
+  },
+  {
+    name: "24/7 Immediate Care",
+    location: "654 Main Street",
+    medicine: ["Medicine C"],
+    openOnHolidays: true,
+    openOnSunday: true,
+    openAllday: true
+  },
+  // ... add more clinics as needed ...
+],
+
       filteredClinics: [],
     };
   },
@@ -65,6 +104,7 @@ export default {
   },
   mounted() {
     this.updateClinicList();
+
     // Initialization code for the map should go here.
     // You may need to convert your vanilla JS map initialization code
     // to Vue's approach, possibly using Vue's lifecycle hooks.

@@ -28,15 +28,15 @@
         </div>
         <div class="team-members">
           <div class="team-member">
-            <img src="@/assets/TeamProfile.png" alt="CAO CHUHAO" />
+            <img src="@/assets/CaoChuhao.jpg" alt="CAO CHUHAO" />
             <p><strong>CAO CHUHAO</strong></p>
           </div>
           <div class="team-member">
-            <img src="@/assets/TeamProfile.png" alt="DANG XUEHAN" />
+            <img src="@/assets/DangXuehan.jpg" alt="DANG XUEHAN" />
             <p><strong>DANG XUEHAN</strong></p>
           </div>
           <div class="team-member">
-            <img src="@/assets/TeamProfile.png" alt="HAN YUNXI" />
+            <img src="@/assets/HanYunxi.jpg" alt="HAN YUNXI" />
             <p><strong>HAN YUNXI</strong></p>
           </div>
           <div class="team-member">
