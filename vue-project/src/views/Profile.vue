@@ -223,7 +223,7 @@ select {
 }
 
 .user-email {
-  font-size: 24px;
+  font-size: 30px;
   font-weight: bold;
   color: white;
 }
@@ -232,6 +232,7 @@ select {
   border: 2px solid #3cb26d;
   border-radius: 10px;
   padding: 20px;
-  font-size: 18px;
+
+  font-size: 20px;
 }
 </style>

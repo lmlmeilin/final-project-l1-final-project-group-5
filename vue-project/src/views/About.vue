@@ -40,7 +40,7 @@
             <p><strong>HAN YUNXI</strong></p>
           </div>
           <div class="team-member">
-            <img src="@/assets/TeamProfile.png" alt="LOW MEI LIN" />
+            <img src="@/assets/LowMeilin.jpg" alt="LOW MEI LIN" />
             <p><strong>LOW MEI LIN</strong></p>
           </div>
         </div>
