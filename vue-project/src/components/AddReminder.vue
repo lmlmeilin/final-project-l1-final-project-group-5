@@ -150,10 +150,10 @@ export default {
         const docRef = await setDoc(doc(db, String(this.useremail), med), {
           Med: med,
           Dosage: dosage,
-          Frequency: freq,
+          Freq: freq,
           BaFood: baFood,
-          SetReminder: setRem,
-          ChooseFrequency: chooseFreq,
+          SetRem: setRem,
+          ChooseFreq: chooseFreq,
           First: first,
           Second: second,
           Third: third,
