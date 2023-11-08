@@ -40,7 +40,7 @@ export default {
   },
   methods: {
   async display(useremail) {
-    console.log("Hello")
+    console.log("in display")
     let allDocuments = await getDocs(collection(db, String(useremail)))    
     let index = 1
     allDocuments.forEach((docs) => {
