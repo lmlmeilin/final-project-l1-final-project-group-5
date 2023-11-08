@@ -9,6 +9,10 @@
       </div>
       <div class="currentReminders">
         <!-- Add content for "Current Reminders" section here -->
+        <div class="header1">
+          <h2>Current Reminders</h2>
+        </div>
+        <div class="reminders"></div>
       </div>
     </div>
   </div>
@@ -74,9 +78,8 @@ export default {
 .content {
   flex: 1;
   display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  flex-direction: row;
+
   text-align: center;
   padding: 20px;
 }
@@ -84,5 +87,17 @@ export default {
 .calendarComponent {
   height: 700px;
   width: 700px;
+  margin: 10px;
+  text-align: left;
+}
+
+.currentReminders {
+  text-align: center;
+  margin-left: 300px;
+}
+
+.header1 {
+  background-color: #3cb26d;
+  text-align: center;
 }
 </style>
