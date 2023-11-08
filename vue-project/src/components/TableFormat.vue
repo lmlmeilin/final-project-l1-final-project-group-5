@@ -1,114 +1,103 @@
 <template>
-  <h1 id="Current">Medicines</h1>
+    <h1 id = "Current">Medicines</h1>    
+    
+    <table id = "table" class = "auto-index">
+        <tr>  
+        <th>Reminder ID</th>       
+        <th>Med</th>
+        <th>Dosage</th>
+        <th>Frequency</th>
+        <th>Before/After Food</th>
+        <th>Set reminder notification</th>
+        <th>Choose Frequency</th>
+        <th>First</th>
+        <th>Second</th>
+        <th>Third</th>
+        <th>Total Duration</th>
+        <th>Actions</th>
+        </tr>
+    </table><br><br>    
 
-  <table id="table" class="auto-index">
-    <tr>
-      <th>Reminder ID</th>
-      <th>Med</th>
-      <th>Dosage</th>
-      <th>Frequency</th>
-      <th>Before/After Food</th>
-      <th>Set reminder notification</th>
-      <th>Choose Frequency</th>
-      <th>First</th>
-      <th>Second</th>
-      <th>Third</th>
-      <th>Total Duration</th>
-      <th>Actions</th>
-    </tr>
-  </table>
-  <br /><br />
 </template>
 
 <script>
 import { auth, db, firebaseApp } from "../firebase.js";
 import { getFirestore } from "firebase/firestore";
 import { collection, getDocs, doc, deleteDoc } from "firebase/firestore";
+import { getAuth} from "firebase/auth";
 
 export default {
-  mounted() {
-    async function display() {
-      let allDocuments = await getDocs(collection(db, "reminder"));
-      // let z = await db.collection("Portfolio").get()
+  mounted(){
+  async function display(){
+  let allDocuments = await getDocs(collection(db,"reminder"))    
+  let index = 1
+    // let z = await db.collection("Portfolio").get()
 
-      allDocuments.forEach((docs) => {
-        let documentData = docs.data();
+  allDocuments.forEach((docs) => {
 
-        let reminderId = documentData.ReminderId;
-        let med = documentData.Med;
-        let dosage = documentData.Dosage;
-        let freq = documentData.Frequency;
-        let baFood = documentData.BaFood;
-        let setRem = documentData.SetReminder;
-        let chooseFreq = documentData.ChooseFrequency;
-        let first = documentData.First;
-        let second = documentData.Second;
-        let third = documentData.Third;
-        let totalDuration = documentData.TotalDuration;
+    let documentData= docs.data()
 
-        // create rows and cells in the table
-        let table = document.getElementById("table");
-        let row = table.insertRow(-reminderId);
+    let reminderId = index
+    let med  = (documentData.Med)
+    let dosage  = (documentData.Dosage)
+    let freq  = (documentData.Frequency)
+    let baFood =  (documentData.BaFood)
+    let setRem = (documentData.SetReminder)
+    let chooseFreq = (documentData.ChooseFrequency)
+    let first = (documentData.First)
+    let second = (documentData.Second)
+    let third = (documentData.Third)
+    let totalDuration = (documentData.TotalDuration)
 
-        let cell1 = row.insertCell(0);
-        let cell2 = row.insertCell(1);
-        let cell3 = row.insertCell(2);
-        let cell4 = row.insertCell(3);
-        let cell5 = row.insertCell(4);
-        let cell6 = row.insertCell(5);
-        let cell7 = row.insertCell(6);
-        let cell8 = row.insertCell(7);
-        let cell9 = row.insertCell(8);
-        let cell10 = row.insertCell(9);
-        let cell11 = row.insertCell(10);
-        let cell12 = row.insertCell(11);
+    // create rows and cells in the table
+    let table = document.getElementById("table")
+    let row = table.insertRow(index)    
 
-        cell1.innerHTML = reminderId;
-        cell2.innerHTML = med;
-        cell3.innerHTML = dosage;
-        cell4.innerHTML = freq;
-        cell5.innerHTML = baFood;
-        cell6.innerHTML = setRem;
-        cell7.innerHTML = chooseFreq;
-        cell8.innerHTML = first;
-        cell9.innerHTML = second;
-        cell10.innerHTML = third;
-        cell11.innerHTML = totalDuration;
+    let cell1 = row.insertCell(0); let cell2 = row.insertCell(1); let cell3 = row.insertCell(2);
+    let cell4 = row.insertCell(3); let cell5 = row.insertCell(4); let cell6 = row.insertCell(5);
+    let cell7 = row.insertCell(6); let cell8 = row.insertCell(7); let cell9 = row.insertCell(8); 
+    let cell10 = row.insertCell(9); let cell11 = row.insertCell(10); let cell12 = row.insertCell(11)
 
-        let deleteButton = document.createElement("button");
+    cell1.innerHTML = index; cell2.innerHTML = med; cell3.innerHTML = dosage; cell4.innerHTML = freq; 
+    cell5.innerHTML = baFood; cell6.innerHTML = setRem;  cell7.innerHTML = chooseFreq; cell8.innerHTML = first; 
+    cell9.innerHTML = second; cell10.innerHTML = third; cell11.innerHTML = totalDuration; 
 
-        deleteButton.id = String(med);
-        deleteButton.className = "bwt";
-        deleteButton.innerHTML = "Delete";
+    let deleteButton = document.createElement("button")
 
-        let editButton = document.createElement("button");
+    deleteButton.id = String(med)
+    deleteButton.className = "bwt"    
+    deleteButton.innerHTML ="Delete"
 
-        editButton.id = String(med);
-        editButton.className = "edit";
-        editButton.innerHTML = "Edit";
+    let editButton = document.createElement("button")
 
-        // append delete button in cell8
-        cell12.appendChild(deleteButton);
-        deleteButton.onclick = function () {
-          deleteInstrument(med);
-        };
-        cell12.appendChild(editButton);
-      });
+    editButton.id = String(med)
+    editButton.className = "edit"    
+    editButton.innerHTML ="Edit"
+
+    // append delete button in cell8
+    cell12.appendChild(deleteButton) 
+    deleteButton.onclick =  function(){
+      deleteInstrument(med)
+    }  
+    cell12.appendChild(editButton) 
+    index += 1
+    })
+  }
+  display()
+
+  async function deleteInstrument(med){
+    alert("You are going to delete " + med)
+    await deleteDoc(doc(db,"reminder", med))
+    console.log("Document successfully deleted!", med);
+    let tb = document.getElementById("table")
+    while (tb.rows.length >1){
+        tb.deleteRow(1)
     }
-    display();
+    display()
+  }
+  }
 
-    async function deleteInstrument(med) {
-      alert("You are going to delete " + med);
-      await deleteDoc(doc(db, "reminder", med));
-      console.log("Document successfully deleted!", med);
-      let tb = document.getElementById("table");
-      while (tb.rows.length > 1) {
-        tb.deleteRow(1);
-      }
-      display();
-    }
-  },
-};
+}
 </script>
 
 <style>
