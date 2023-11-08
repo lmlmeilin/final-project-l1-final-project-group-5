@@ -52,6 +52,7 @@ export default {
   flex-direction: column;
   align-items: left;
   width: min-content;
+  height: 100vh;
 }
 
 .nav-logo img {
@@ -77,7 +78,7 @@ export default {
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  margin: 15px 0; /* Add vertical margin between buttons */
+  margin: 20px 0; /* Add vertical margin between buttons */
 }
 
 .but-img {
