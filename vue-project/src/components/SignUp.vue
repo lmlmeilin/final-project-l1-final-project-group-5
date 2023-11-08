@@ -10,8 +10,7 @@
       </div>
 
       <div class="form">
-        <div class="form-group">
-          <label for="email">Email:</label>
+        <div class="input-group">
           <input
             type="email"
             id="email"
@@ -20,8 +19,7 @@
           />
         </div>
 
-        <div class="form-group">
-          <label for="password">Password:</label>
+        <div class="input-group">
           <input
             type="password"
             id="password"
@@ -30,8 +28,7 @@
           />
         </div>
 
-        <div class="form-group">
-          <label for="confirmPassword">Confirm Password:</label>
+        <div class="input-group">
           <input
             type="password"
             id="confirmPassword"
@@ -207,11 +204,33 @@ button {
   border-radius: 4px;
   padding: 10px 20px;
   cursor: pointer;
+  text-align: center;
 }
 
 .error-message {
   color: red;
   font-size: 14px;
   margin-top: 10px;
+}
+
+.input-group {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Align text boxes to the center */
+  margin: 10px; /* Add 10px margin around the text boxes */
+}
+
+.input-group label {
+  font-weight: 600;
+  margin-bottom: 5px; /* Adjust margin for better spacing */
+}
+
+.input-group input {
+  width: 100%;
+  padding: 8px;
+  border: 2px solid #3cb26d;
+  border-radius: 4px;
+  font-size: 16px;
+  margin: 10px 0; /* Add margin around each input field */
 }
 </style>
