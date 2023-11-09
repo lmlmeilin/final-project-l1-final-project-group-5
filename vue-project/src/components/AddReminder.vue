@@ -54,9 +54,8 @@
         </select>
         <br /><br />
 
-        <label for="chooseFreq"
-          >Choose frequency of intake (Select Daily/Weekly/Monthly)</label
-        >
+        <label for="chooseFreq">
+          Choose frequency of intake (Select Daily/Weekly/Monthly)</label>
         <br />
         <select id="chooseFreq" name="Select Daily/Weekly/Monthly">
           <option value="Daily">Daily</option>
@@ -88,7 +87,7 @@
         <div class="createReminder">
           <button id="createReminderButton" type="button" v-on:click="savetofs">
             Create Reminder
-          </button>
+          </button>  <br/> <br/>
         </div>
       </div>
     </form>

@@ -3,17 +3,17 @@
     
     <table id = "table" class = "auto-index">
         <tr>  
-        <th>Reminder ID</th>       
-        <th>Med</th>
+        <th>Index</th>       
+        <th>Medicine</th>
         <th>Dosage</th>
         <th>Frequency</th>
         <th>Before/After Food</th>
         <th>Set reminder notification</th>
-        <th>Choose Frequency</th>
-        <th>First</th>
-        <th>Second</th>
-        <th>Third</th>
-        <th>Total Duration</th>
+        <th>Frequency</th>
+        <th>First Intake</th>
+        <th>Second Intake</th>
+        <th>Third Intake</th>
+        <th>Total Duration Required (Days)</th>
         <th>Actions</th>
         </tr>
     </table><br><br>    
@@ -78,11 +78,13 @@
           <br /><br />
 
         <button type="submit" class = "editBtn">Edit</button> <br/><br/>
-        <button @click="cancelEdit" class = "cancelBtn">Cancel</button>
+        <button @click="cancelEdit" class = "cancelBtn">Cancel</button>  <br/> <br/>
+        
         </div>
       </form>
-        
     </div>
+    
+
 
 </template>
 
@@ -234,9 +236,6 @@ export default {
       table.deleteRow(1);
     }
     },
-    checkSetRem() {
-    console.log("editData.SetRem:", this.editData.SetRem);
-   },
   }
 }
 </script>
