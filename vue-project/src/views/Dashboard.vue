@@ -58,7 +58,7 @@ export default {
     },
 
     openAddReminder() {
-      this.showAddReminder = true;
+      this.showAddReminder = !this.showAddReminder; // allow addReminderView to show/not show when toggling the Add Reminder button
     }
 
   },
