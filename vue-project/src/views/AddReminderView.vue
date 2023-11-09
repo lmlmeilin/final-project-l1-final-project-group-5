@@ -9,7 +9,6 @@
 </template>
 
 <script>
-import NavBar from '@/components/NavBar.vue'
 import AddReminder from '@/components/AddReminder.vue'
 import  TableFormat from '@/components/TableFormat.vue'
 import { getAuth, onAuthStateChanged } from "firebase/auth";
@@ -23,7 +22,6 @@ export default {
   },
   name: 'addReminderView',
   components:{
-      NavBar, 
       AddReminder,
       TableFormat,
   },
@@ -42,11 +40,6 @@ export default {
 </script>
 
 <style>
-.nav-bar {
-  width: 100%;
-  position: fixed;
-  background-color: #ffffff; 
-}
 .content{
   margin-left: 100px;
   display: flex;

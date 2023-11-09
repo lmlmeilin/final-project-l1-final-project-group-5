@@ -5,7 +5,8 @@
       <div class="calendarComponent">
         <FullCalendar ref="calendar" :options="calendarOptions" />
         <br />
-        <button v-on:click="logSelectedDate">Add Reminder</button>
+        <button @click="openAddReminder">Add Reminder</button>
+        <my-view v-if="showAddReminder"></my-view>
       </div>
       <div class="currentReminders">
         <!-- Add content for "Current Reminders" section here -->
@@ -19,6 +20,7 @@
 </template>
 
 <script>
+import AddReminderView from '@/views/AddReminderView.vue'
 import NavBar from "@/components/NavBar.vue";
 import FullCalendar from "@fullcalendar/vue3";
 import dayGridPlugin from "@fullcalendar/daygrid";
@@ -26,11 +28,14 @@ import interactionPlugin from "@fullcalendar/interaction";
 
 export default {
   components: {
+    'my-view': AddReminderView,
+    AddReminderView,
     FullCalendar,
     NavBar,
   },
   data() {
     return {
+      showAddReminder: false,
       calendarOptions: {
         plugins: [dayGridPlugin, interactionPlugin],
         initialView: "dayGridMonth",
@@ -51,17 +56,11 @@ export default {
       let dateSelected = info.startStr;
       this.selectedDate = dateSelected;
     },
-    logSelectedDate() {
-      this.date = this.selectedDate;
-      if (this.date && this.selectedDate) {
-        let x = this.date.split("-");
-        const selectedDate = x[2] + "-" + x[1] + "-" + x[0];
-        this.$router.push({
-          path: "/addReminderView",
-          query: { updatedDate: selectedDate },
-        });
-      }
-    },
+
+    openAddReminder() {
+      this.showAddReminder = true;
+    }
+
   },
 };
 </script>
@@ -79,9 +78,10 @@ export default {
   flex: 1;
   display: flex;
   flex-direction: row;
-
   text-align: center;
   padding: 20px;
+  max-height: 100vh;
+  overflow-y: auto;
 }
 
 .calendarComponent {
