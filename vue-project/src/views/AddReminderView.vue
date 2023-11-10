@@ -2,11 +2,11 @@
   <div style="text-align:center;" v-if="user" class ="AddReminderView">
       <NavBar class="nav-bar" />
       <div class="content">
-      <AddReminder @added="change"/>
       <TableFormat :key="refreshComp"/> 
-      <button @click="openAddReminder">Add Reminder</button>
-      <my-view v-if="showAddReminder"></my-view>
-
+      <button @click="openAddReminder" class= "addRemButton">Add Reminder</button>
+        <div v-if="showAddReminder">
+          <AddReminder @added="change"/>
+        </div>
       </div>
   </div>
 </template>
@@ -26,7 +26,7 @@ export default {
   },
   name: 'addReminderView',
   components:{
-    'my-view': AddReminder,
+      AddReminder,
       NavBar,
       TableFormat,
   },
@@ -39,13 +39,14 @@ export default {
   },
   methods:{
     change(){  
-      this.refreshComp += 1
+      this.refreshComp += 1;
     },
     openAddReminder() {
       this.showAddReminder = !this.showAddReminder; 
-    }
-  },  
+    },
+  }
 }
+
 </script>
 
 <style>
@@ -65,4 +66,8 @@ export default {
   overflow-y: auto;
 }
 
+.addRemButton {
+  width: 150px;
+  
+}
 </style>

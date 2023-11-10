@@ -1,7 +1,7 @@
 <template>
     <h1 class = "header1">Medicines</h1>    
     
-    <table id = "table" class = "auto-index">
+    <table id = "table" class = "auto-index" :key="count">
         <tr>  
         <th>Index</th>       
         <th>Medicine</th>
@@ -98,6 +98,7 @@ const db = getFirestore(firebaseApp);
 export default {
   data() {
     return {
+      count:"",
       isEditing: false,
       editData: { 
         Med: "",
@@ -120,66 +121,6 @@ export default {
     this.display(this.useremail)
   },
   methods: {
-    async savetofs() {
-    const auth = getAuth();
-    this.useremail = auth.currentUser.email;
-
-    let med = document.getElementById("med").value;
-    // Check if the medicine already exists for the user
-    const medDocRef = doc(db, String(this.useremail), med);
-    const medDoc = await getDoc(medDocRef);
-    if (medDoc.exists()) {
-      alert(
-        "Medicine with this name already exists. Please enter another Medicine name."
-      );
-      return;
-    }
-
-    let dosage = document.getElementById("dosage").value;
-    let freq = document.getElementById("freq").value;
-    let baFood = document.getElementById("baFood").value;
-    let setRem = document.getElementById("setRem").value;
-    let chooseFreq = document.getElementById("chooseFreq").value;
-    let first = document.getElementById("first").value;
-    let second = document.getElementById("second").value;
-    let third = document.getElementById("third").value;
-    let totalDuration = document.getElementById("totalDuration").value;
-
-    alert("Saving your data for Medicine: " + med);
-
-    try {
-      const docRef = await setDoc(doc(db, String(this.useremail), med), {
-        Med: med,
-        Dosage: dosage,
-        Freq: freq,
-        BaFood: baFood,
-        SetRem: setRem,
-        ChooseFreq: chooseFreq,
-        First: first,
-        Second: second,
-        Third: third,
-        TotalDuration: totalDuration,
-      });
-
-      document.getElementById("myform").reset();
-
-      // Emit the "added" event with the reminder information
-      this.$emit("added", {
-        Med: med,
-        Dosage: dosage,
-        Freq: freq,
-        BaFood: baFood,
-        SetRem: setRem,
-        ChooseFreq: chooseFreq,
-        First: first,
-        Second: second,
-        Third: third,
-        TotalDuration: totalDuration,
-      });
-    } catch (error) {
-      console.error("Error adding document: ", error);
-    }
-  },
   async display(useremail) {
     console.log("in display")
     let allDocuments = await getDocs(collection(db, String(useremail)))    
@@ -290,6 +231,7 @@ export default {
           TotalDuration: "",
         }
         this.display(this.useremail);
+        
     }, 
     clearTable() {
       let table = document.getElementById("table");
