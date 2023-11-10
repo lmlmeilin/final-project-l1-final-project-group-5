@@ -14,6 +14,7 @@
           <h2>Current Reminders</h2>
         </div>
         <div class="reminders"></div>
+          <TableFormat :reminders="reminders" @edited="handleReminderEdited" />
       </div>
     </div>
   </div>
@@ -49,6 +50,7 @@ export default {
         selectable: true,
       },
       selectedDate: null,
+      reminders: [],
     };
   },
   methods: {
@@ -58,7 +60,7 @@ export default {
     },
 
     openAddReminder() {
-      this.showAddReminder = !this.showAddReminder; // allow addReminderView to show/not show when toggling the Add Reminder button
+      this.showAddReminder = true;
     }
 
   },

@@ -65,6 +65,7 @@ export default {
   align-items: center;
   text-align: center;
   padding: 20px;
+  margin-left: 0px;
 }
 
 .quote {

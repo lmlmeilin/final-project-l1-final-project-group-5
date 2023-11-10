@@ -153,7 +153,7 @@ export default {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  margin: 0;
+  margin-left: 0px;
   padding: 30px;
 }
 
