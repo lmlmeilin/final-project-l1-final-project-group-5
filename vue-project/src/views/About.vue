@@ -138,6 +138,10 @@ export default {
   position: fixed;
 }
 
+.content {
+  margin-left: 0px;
+}
+
 .w-w-d {
   color: #3cb26d;
 }
