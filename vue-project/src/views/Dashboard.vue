@@ -61,19 +61,7 @@ export default {
 
     openAddReminder() {
       this.showAddReminder = true;
-    },
-    handleReminderAdded(reminder) {
-      this.reminders.push(reminder);
-    },
-    // Listen to the "edited" event and update the reminders array
-    handleReminderEdited(updatedReminder) {
-      const index = this.reminders.findIndex(
-        (reminder) => reminder.Med === updatedReminder.Med
-      );
-      if (index !== -1) {
-        this.$set(this.reminders, index, updatedReminder);
-      }
-    },
+    }
 
   },
 };
