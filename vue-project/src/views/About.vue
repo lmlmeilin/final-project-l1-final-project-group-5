@@ -128,14 +128,20 @@ export default {
 <style scoped>
 .about-page {
   display: flex;
-  flex-direction: row;
-  align-items: stretch;
+  flex-direction: row; /* Change the direction to column */
+  align-items: center; /* Center items horizontally */
   min-height: 100vh;
   overflow: hidden;
 }
 
 .navbar {
   position: fixed;
+}
+
+.content {
+  display: flex;
+  flex-direction: column; /* Change the direction to column */
+  align-items: center; /* Center items horizontally */
 }
 
 .w-w-d {
@@ -159,7 +165,7 @@ export default {
 
 .background h3 {
   font-size: 90px;
-  margin: 0;
+  margin: 0px;
   color: #fff;
   outline: gray;
   text-shadow: gray;
@@ -169,7 +175,7 @@ export default {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-left: 65px;
+
   margin-top: 20px;
   border: 4px solid #3cb26d;
   border-radius: 5px;
@@ -216,7 +222,6 @@ export default {
   flex-direction: column;
   align-items: center;
   margin-top: 60px;
-  margin-right: 155px;
 }
 
 .team-members {
@@ -255,7 +260,6 @@ export default {
   border-radius: 5px;
   max-width: 80%;
   flex-direction: column;
-  margin-left: 95px;
 }
 
 .faq-list {
@@ -295,7 +299,6 @@ export default {
   justify-content: center;
   align-items: center;
   padding: 40px;
-  margin-left: 520px;
 
   max-height: 40px;
 }
