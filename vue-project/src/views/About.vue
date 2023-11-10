@@ -154,7 +154,6 @@ export default {
   align-items: center;
   justify-content: center;
   margin: 0;
-  padding: 30px;
 }
 
 .background h3 {
@@ -173,7 +172,6 @@ export default {
   margin-top: 20px;
   border: 4px solid #3cb26d;
   border-radius: 5px;
-  padding: 20px;
   text-align: center;
   max-width: 80%;
   flex-direction: column;
@@ -192,7 +190,6 @@ export default {
   justify-content: center;
   height: 50px;
   width: 180px;
-  margin: 0;
 }
 
 .section-title h4 {
@@ -205,7 +202,7 @@ export default {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: 30px;
+  padding: 20px;
 }
 
 .text-box {
@@ -297,7 +294,7 @@ export default {
   justify-content: center;
   align-items: center;
   padding: 40px;
-  margin-left: 628px;
+  margin-left: 520px;
 
   max-height: 40px;
 }
