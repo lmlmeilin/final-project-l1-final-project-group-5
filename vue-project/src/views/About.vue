@@ -138,10 +138,6 @@ export default {
   position: fixed;
 }
 
-.content {
-  margin-left: 0px;
-}
-
 .w-w-d {
   color: #3cb26d;
 }
@@ -157,7 +153,7 @@ export default {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  margin: 0;
+  margin-left: 0px;
   padding: 30px;
 }
 
