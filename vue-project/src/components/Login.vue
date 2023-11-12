@@ -78,7 +78,7 @@ export default {
         if (error.code === "auth/wrong-password") {
           this.showError = true;
           this.errorMessage = "Incorrect password. Please check again.";
-        } else if (error.code === "auth/user-not-found") {
+        } else if (error.code === "auth/invalid-login-credentials") {
           this.showEmailNotFoundError = true;
           this.showError = false;
         } else {
