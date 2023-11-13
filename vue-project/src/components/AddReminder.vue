@@ -134,15 +134,38 @@ export default {
          return;
       }
 
+      // Check if form fields are empty
       let dosage = document.getElementById("dosage").value;
       let freq = document.getElementById("freq").value;
+      let totalDuration = document.getElementById("totalDuration").value;
+
+      if (!med || !dosage || !freq || !totalDuration) {
+          alert("Please fill in all the required fields.");
+          return;
+      }
+
+      // Check for negative values
+      if (dosage < 0) {
+        alert("Invalid dosage. Please enter a valid number that is not negative.");
+        return;
+      }
+
+      if (freq < 0) {
+        alert("Invalid Number Of Times. Please enter a valid number that is not negative.");
+        return;
+      }
+
+      if (totalDuration < 0) {
+        alert("Invalid Total Days Required. Please enter a valid number that is not negative.");
+        return;
+      }
+
       let baFood = document.getElementById("baFood").value;
       let setRem = document.getElementById("setRem").value;
       let chooseFreq = document.getElementById("chooseFreq").value;
       let first = document.getElementById("first").value;
       let second = document.getElementById("second").value;
       let third = document.getElementById("third").value;
-      let totalDuration = document.getElementById("totalDuration").value;
 
       alert(" Saving your data for Medicine : " + med);
     

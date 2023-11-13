@@ -202,6 +202,27 @@ export default {
       this.display(this.useremail);
     }, 
     async updateMeds() {
+
+      if (!this.editData.Med|| !this.editData.Dosage || !this.editData.Freq|| !this.editData.TotalDuration) {
+          alert("Please fill in all the required fields.");
+          return;
+      }
+
+      if (this.editData.Dosage < 0) {
+        alert("Invalid dosage. Please enter a valid number that is not negative.");
+        return;
+      } 
+
+      if (this.editData.Freq < 0) {
+        alert("Invalid Number Of Times. Please enter a valid number that is not negative.");
+        return;
+      }
+
+      if (this.editData.TotalDuration < 0) {
+        alert("Invalid Total Days Required. Please enter a valid number that is not negative.");
+        return;
+      }
+
       const docRef = doc(db, String(this.useremail), this.editData.Med);
       const newData = {
         Med: this.editData.Med,
@@ -215,6 +236,9 @@ export default {
         Third: this.editData.Third,
         TotalDuration: this.editData.TotalDuration,
         }
+
+
+
         await updateDoc(docRef, newData)
         this.$emit("edited", newData);
         this.isEditing = false;
