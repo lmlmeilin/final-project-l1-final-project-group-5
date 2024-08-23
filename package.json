@@ -3,5 +3,12 @@
     "firebase": "^9.23.0",
     "firebaseui": "^0.600.0",
     "vue-router": "^4.2.5"
+  },
+  "scripts": {
+    "build": "vue-cli-service build",
+    "lint": "vue-cli-service lint"
+  },
+  "devDependencies": {
+    "@vue/cli-service": "^5.0.8"
   }
 }
